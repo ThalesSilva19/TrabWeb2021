@@ -1,0 +1,141 @@
+:root {
+	--main-color: #5D5FEF;
+	--main-color-light: #9899FF;
+	--color-gray: #838383;
+}
+
+.admin-content {
+	max-width: 1200px;
+	margin: auto;
+}
+
+.admin-title {
+	color: var(--main-color);
+	font-size: 1.5em;
+}
+
+/***************/
+/* Admin table */
+/***************/
+/* Header */
+.admin-table {
+	width: 95%;
+	margin-left: 2.5%;
+	border-collapse: collapse;
+	margin-bottom: 50px;
+}
+
+.admin-table thead {
+	background: var(--main-color-light);
+	height: 35px;
+}
+
+.admin-table th {
+	text-align: left;
+	text-indent: 20px;
+	color: white;
+}
+
+/* Content rows */
+.admin-table tr {
+	height: 35px;
+}
+
+.admin-table td {
+	border-bottom: 1px solid #C4C4C4;
+	text-indent: 20px;
+	color: var(--color-gray);
+	background: #fff;
+}
+
+/* Field styles */
+.admin-table td.admin-table-button {
+	width: 100px;
+	text-align: right;
+	padding-right: 20px;
+}
+
+/* link button */
+.admin-table a {
+	text-decoration: none;
+	color: white;
+	font-weight: bold;
+}
+
+.admin-table th a {
+	color: white;
+}
+
+.admin-table td a {
+	color: var(--main-color);
+}
+
+/*******************/
+/* Admin Edit Page */
+/*******************/
+.admin-edit {
+	 display: flex;
+}
+
+label {
+	color: var(--color-gray);
+}
+
+/***************/
+/* Edit image  */
+/***************/
+.admin-image-container {
+	width: 250px;
+}
+
+.admin-image {
+	width: 90%;
+	padding-left: 5%;
+}
+
+.admin-image-button-container {
+	display: flex;
+	justify-content: space-between;
+	padding: 0px 20px;
+}
+
+.admin-image-button {
+	background: none;
+	border: none;
+	cursor: pointer;
+	color: var(--color-gray);
+}
+
+/***************/
+/* Admin forms */
+/***************/
+.admin-edit-fields-container {
+	width: 100%;
+}
+
+input {
+	width: 100%;
+	border: 1px solid #C0C0C0;
+	border-radius: 5px;
+	height: 30px;
+}
+
+input:enabled {
+	background: white;
+}
+
+input:disabled {
+	background: #EEE;
+}
+
+/*****************/
+/* Admin buttons */
+/*****************/
+.admin-button-container {
+	display: flex;
+	justify-content: center;
+}
+
+.admin-button-container > button {
+  margin: 0px 10px;
+}
