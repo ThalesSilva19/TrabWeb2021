@@ -7,8 +7,8 @@
 
 		<link rel="preconnect" href="https://fonts.gstatic.com">
 		<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-		<link rel="stylesheet" href="../styles/main.css">
-		<link rel="stylesheet" href="../styles/admin.css">
+		<link rel="stylesheet" href="../../styles/main.css">
+		<link rel="stylesheet" href="../../styles/admin.css">
 	</head>
 	<body>
 		<nav class="navbar">
@@ -16,13 +16,17 @@
 				<button class="button-main">ARTE FÍSICA</button>
 				<button class="button-main">ARTE DIGITAL</button>
 				<button class="button-main">SACOLA</button>
-				<button class="button-main">LOGIN</button>
+				<button class="button-main" onclick="window.location.href='main.html'">ADMIN</button>
 			</div>
 			<div class="navbar-end">
+				<input type="text" placeholder="Pesquisa">
 			</div>
 		</nav>
 		<div class="admin-content">
 			<h2 class="admin-title">Administração do site</h2>
+			<div class="admin-breadcrumb">
+				<p>Admin</p>
+			</div>
 			<table class="admin-table">
 				<thead>
 					<tr>
@@ -33,14 +37,14 @@
 				</thead>
 				<tbody>
 					<tr>
-						<td><a href="admin-view.html">Clientes</a></td>
+						<td><a href="list.html">Clientes</a></td>
 						<td class="admin-table-button">Adicionar</td>
-						<td class="admin-table-button">Ver todos</td>
+						<td class="admin-table-button"><a href="list.html">Ver todos</a></td>
 					</tr>
 					<tr>
-						<td><a href="admin-view.html">Administrador</a></td>
+						<td><a href="list.html">Administrador</a></td>
 						<td class="admin-table-button">Adicionar</td>
-						<td class="admin-table-button">Ver todos</td>
+						<td class="admin-table-button"><a href="list.html">Ver todos</a></td>
 					</tr>
 				</tbody>
 			</table>
@@ -55,14 +59,14 @@
 				</thead>
 				<tbody>
 					<tr>
-						<td><a href="admin-view.html">Arte Física</a></td>
+						<td><a href="list.html">Arte Física</a></td>
 						<td class="admin-table-button">Adicionar</td>
-						<td class="admin-table-button">Ver todos</td>
+						<td class="admin-table-button"><a href="list.html">Ver todos</a></td>
 					</tr>
 					<tr>
-						<td><a href="admin-view.html">Arte Digital</a></td>
+						<td><a href="list.html">Arte Digital</a></td>
 						<td class="admin-table-button">Adicionar</td>
-						<td class="admin-table-button">Ver todos</td>
+						<td class="admin-table-button"><a href="list.html">Ver todos</a></td>
 					</tr>
 				</tbody>
 			</table>

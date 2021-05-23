@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<title>Admin - Editar Arte Física</title>
+		<meta charset="utf-8">
+		<meta neme="viewport" content="width=device-width, initial-scale=1.0">
+
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+		<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="../../styles/main.css">
+		<link rel="stylesheet" href="../../styles/admin.css">
+	</head>
+	<body>
+		<nav class="navbar">
+			<div class="navbar-start">
+				<button class="button-main">ARTE FÍSICA</button>
+				<button class="button-main">ARTE DIGITAL</button>
+				<button class="button-main">SACOLA</button>
+				<button class="button-main" onclick="window.location.href='main.html'">ADMIN</button>
+			</div>
+			<div class="navbar-end">
+				<input type="text" placeholder="Pesquisa">
+			</div>
+		</nav>
+		<div class="admin-content">
+			<h2 class="admin-title">Editar Arte Física</h2>
+			<div class="admin-breadcrumb">
+				<a href="main.html">Admin</a>
+				<p class="admin-breadcrumb-divider">/</p>
+				<a href="list.html">Arte Física</a>
+				<p class="admin-breadcrumb-divider">/</p>
+				<p>1</p>
+			</div>
+			<div class="admin-edit">
+				<div class="admin-image-container">
+					<img class="admin-image" src="../../img/monaLisa.jpg" alt="Pintura da Mona Lisa">
+					<div class="admin-image-button-container">
+						<button class="admin-image-button">Alterar</button>
+						<button class="admin-image-button">Excluir</button>
+					</div>
+				</div>
+				<div class="admin-edit-fields-container">
+					<form>
+						<label for="id">Id</label><br>
+						<input type="number" value="1" disabled><br><br>
+						<label for="name">Nome</label><br>
+						<input type="text" id="fname" value="Mona Lisa"><br><br>
+						<label for="painter">Pintor</label><br>
+						<input type="text" id="fpintor" value="Da Vinci"><br><br>
+						<label for="price">Preço incial</label><br>
+						<input type="number" value="20.99"><br><br>
+						<label for="price">Maior lance</label><br>
+						<input type="number" value="25.99"><br><br>
+						<label for="sold">Vendido</label><br>
+						<input type="checkbox" value="false"><br><br>
+					</form>
+					<div class="admin-button-container">
+						<button class="button-outline-secondary" onclick="window.location.href='list.html'">Excluir</button>
+						<button class="button-outline-main" onclick="window.location.href='list.html'">Cancelar</button>
+						<button class="button-main" onclick="window.location.href='list.html'">Salvar</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

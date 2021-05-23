@@ -7,8 +7,8 @@
 
 		<link rel="preconnect" href="https://fonts.gstatic.com">
 		<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-		<link rel="stylesheet" href="../styles/main.css">
-		<link rel="stylesheet" href="../styles/admin.css">
+		<link rel="stylesheet" href="../../styles/main.css">
+		<link rel="stylesheet" href="../../styles/admin.css">
 	</head>
 	<body>
 		<nav class="navbar">
@@ -16,58 +16,70 @@
 				<button class="button-main">ARTE FÍSICA</button>
 				<button class="button-main">ARTE DIGITAL</button>
 				<button class="button-main">SACOLA</button>
-				<button class="button-main">LOGIN</button>
+				<button class="button-main" onclick="window.location.href='main.html'">ADMIN</button>
 			</div>
 			<div class="navbar-end">
+				<input type="text" placeholder="Pesquisa">
 			</div>
 		</nav>
 		<div class="admin-content">
 			<h2 class="admin-title">Arte Física</h2>
+			<div class="admin-breadcrumb">
+				<a href="main.html">Admin</a>
+				<p class="admin-breadcrumb-divider">/</p>
+				<p>Arte Física</p>
+			</div>
 			<table class="admin-table">
 				<thead>
 					<tr>
 						<th>Nome</th>
 						<th>Pintor</th>
-						<th>Preço</th>
+						<th>Preço inicial</th>
+						<th>Maior lance</th>
 						<th>Vendido</th>
-						<th><a href="admin-edit.html">Adicionar</a></th>
+						<th><a href="edit.html">Adicionar</a></th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr>
 						<td>Mona Lisa</td>
 						<td>DaVinci</td>
+						<td>R$20,99</td>
 						<td>R$25,99</td>
 						<td>Não</td>
-						<td class="admin-table-button"><a href="admin-edit.html">Editar</a></td>
+						<td class="admin-table-button"><a href="edit.html">Editar</a></td>
 					</tr>
 					<tr>
 						<td>Mona Lisa</td>
 						<td>DaVinci</td>
+						<td>R$20,99</td>
 						<td>R$25,99</td>
 						<td>Não</td>
-						<td class="admin-table-button"><a href="admin-edit.html">Editar</a></td>
+						<td class="admin-table-button"><a href="edit.html">Editar</a></td>
 					</tr>
 					<tr>
 						<td>Mona Lisa</td>
 						<td>DaVinci</td>
+						<td>R$20,99</td>
 						<td>R$25,99</td>
 						<td>Não</td>
-						<td class="admin-table-button"><a href="admin-edit.html">Editar</a></td>
+						<td class="admin-table-button"><a href="edit.html">Editar</a></td>
 					</tr>
 					<tr>
 						<td>Mona Lisa</td>
 						<td>DaVinci</td>
+						<td>R$20,99</td>
 						<td>R$25,99</td>
 						<td>Não</td>
-						<td class="admin-table-button"><a href="admin-edit.html">Editar</a></td>
+						<td class="admin-table-button"><a href="edit.html">Editar</a></td>
 					</tr>
 					<tr>
 						<td>Mona Lisa</td>
 						<td>DaVinci</td>
+						<td>R$20,99</td>
 						<td>R$25,99</td>
 						<td>Não</td>
-						<td class="admin-table-button"><a href="admin-edit.html">Editar</a></td>
+						<td class="admin-table-button"><a href="edit.html">Editar</a></td>
 					</tr>
 				</tbody>
 			</table>

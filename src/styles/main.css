@@ -23,6 +23,21 @@ body {
 	background: var(--main-color);
 	width: 100%;
 	margin-bottom: 20px;
+	display: block;
+	overflow: hidden;
+}
+
+.navbar .navbar-start {
+	float: left;
+}
+
+.navbar .navbar-end {
+	float: right;
+}
+
+.navbar .navbar-end input {
+	margin: 5px 5px;
+	width: 250px;
 }
 
 /***********/
@@ -38,6 +53,7 @@ body {
 	font-size: 18px;
 	font-weight: bold;
 	color: white;
+	cursor: pointer;
 }
 
 .button-outline-main {
@@ -49,6 +65,7 @@ body {
 	font-size: 18px;
 	font-weight: bold;
 	color: var(--main-color);
+	cursor: pointer;
 }
 
 .button-outline-main:hover {
@@ -65,4 +82,5 @@ body {
 	font-size: 18px;
 	font-weight: bold;
 	color: var(--secondary-color);
+	cursor: pointer;
 }
