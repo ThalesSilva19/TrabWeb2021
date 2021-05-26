@@ -53,35 +53,33 @@ Clique em _M_ para ir ao mockup. (criados utilizando [Figma](https://www.figma.c
 Clique em _H_ para ir à página html.
 
 **Páginas:**
-- Página Principal (M, H)
-- Detalhe Arte (M, H)
-- Busca (M, H)
-- Login (M, H)
-- Registro (M, H)
-- Sacola (M, H)
-	- Checkout (M, H)
-- Minhas artes (M, H)
-	- Gerenciar arte existe (M, H)
-	- Upload nova arte (M, H)
-- Admin (M, H)
-	- Lista Artes (M, H)
-		- Adicionar Arte (M, H)
-		- Editar Arte (M, H)
-	- Lista Clientes (M, H)
-		- Adicionar Cliente (M, H)
-		- Editar Cliente (M, H)
-	- Lista Admins (M, H)
-		- Adicionar Admin (M, H)
-		- Editar Admin (M, H)
-
-Se preferir, é possível navegar pelo mockup aqui. // TODO
+- Página Principal ([M](./blob/main/mockup/paginaPrincipal.png), [H](./blob/main/src/pages/index.html))
+- Detalhe Arte
+- Busca
+- Login ([M](./blob/main/mockup/login.png), H)
+- Registro ([M](./blob/main/mockup/registro.png), H)
+- Sacola ([M](./blob/main/mockup/sacola.png), [H](./blob/main/src/pages/public/bag.html))
+	- Checkout
+- Minhas artes
+	- Gerenciar arte existe ([M](./blob/main/mockup/gerenciarArteExistente.png))
+	- Upload nova arte
+- Admin ([M](./blob/main/mockup/admin.png), [H](./blob/main/src/pages/admin/main.html))
+	- Lista Artes ([M](./blob/main/mockup/adminListaArtes.png), [H](./blob/main/src/pages/admin/list.html))
+		- Adicionar Arte
+		- Editar Arte ([M](./blob/main/mockup/adminEditarArte.png), [H](./blob/main/src/pages/admin/edit.html))
+	- Lista Clientes
+		- Adicionar Cliente
+		- Editar Cliente
+	- Lista Admins
+		- Adicionar Admin
+		- Editar Admin
 
 ### 2.2 Dados no Servidor
 Todos os dados especificados nos requisitos gerais, e nos requisitos da [seção 1](#1-requisitos) serão armazenados em um banco de dados relacional. Apresentamos abaixo os campos das tabelas mais importantes:
 
-Art {id, name, description, image, price, quantity, quantity_sold, can_sell, owner_id, creation}
-Customer {id, name, address, phone, email, password, total_received, token, creation}
-Admin {id, name, phone, username, password, token, creation}
+_Art {id, name, description, image, price, quantity, quantity_sold, can_sell, owner_id, creator_id, creation}\
+Customer {id, name, address, phone, email, password, total_received, token, creation}\
+Admin {id, name, phone, username, password, token, creation}_
 
 Além disso, o servidor irá prover uma API para permitir a comunicação da aplicação com o banco de dados de acordo com as permissões do usuário. Será possível distinguir entre usuário nos requests a partir do token.
 

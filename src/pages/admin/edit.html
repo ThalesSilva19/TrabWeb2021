@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 	<head>
-		<title>Admin - Editar Arte Física</title>
+		<title>Admin - Editar Arte Virtual</title>
 		<meta charset="utf-8">
 		<meta neme="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -13,27 +13,28 @@
 	<body>
 		<nav class="navbar">
 			<div class="navbar-start">
-				<button class="button-main">ARTE FÍSICA</button>
-				<button class="button-main">ARTE DIGITAL</button>
+				<button class="button-main">ARTES VIRTUAIS</button>
 				<button class="button-main">SACOLA</button>
-				<button class="button-main" onclick="window.location.href='main.html'">ADMIN</button>
+				<button class="button-main">MINHAS ARTES</button>
+				<button class="button-main">ADMIN</button>
+				<button class="button-main">SAIR</button>
 			</div>
 			<div class="navbar-end">
 				<input type="text" placeholder="Pesquisa">
 			</div>
 		</nav>
 		<div class="admin-content">
-			<h2 class="admin-title">Editar Arte Física</h2>
+			<h2 class="admin-title">Editar Arte Virtual</h2>
 			<div class="admin-breadcrumb">
 				<a href="main.html">Admin</a>
 				<p class="admin-breadcrumb-divider">/</p>
-				<a href="list.html">Arte Física</a>
+				<a href="list.html">Arte Virtual</a>
 				<p class="admin-breadcrumb-divider">/</p>
 				<p>1</p>
 			</div>
 			<div class="admin-edit">
 				<div class="admin-image-container">
-					<img class="admin-image" src="../../img/monaLisa.jpg" alt="Pintura da Mona Lisa">
+					<img class="admin-image" src="../../img/art3.jpeg" alt="Objeto Rosa">
 					<div class="admin-image-button-container">
 						<button class="admin-image-button">Alterar</button>
 						<button class="admin-image-button">Excluir</button>
@@ -44,15 +45,21 @@
 						<label for="id">Id</label><br>
 						<input type="number" value="1" disabled><br><br>
 						<label for="name">Nome</label><br>
-						<input type="text" id="fname" value="Mona Lisa"><br><br>
-						<label for="painter">Pintor</label><br>
-						<input type="text" id="fpintor" value="Da Vinci"><br><br>
-						<label for="price">Preço incial</label><br>
-						<input type="number" value="20.99"><br><br>
-						<label for="price">Maior lance</label><br>
-						<input type="number" value="25.99"><br><br>
-						<label for="sold">Vendido</label><br>
+						<input type="text" id="fname" value="Objeto Rosa"><br><br>
+						<label for="painter">Proprietário</label><br>
+						<input type="text" id="fpintor" value="theCollector"><br><br>
+						<label for="painter">Criador</label><br>
+						<input type="text" id="fpintor" value="breno"><br><br>
+						<label for="price">Preço</label><br>
+						<input type="number" value="100.00"><br><br>
+						<label for="price">Quantidade</label><br>
+						<input type="number" value="2"><br><br>
+						<label for="price">Quantidade Vendida</label><br>
+						<input type="number" value="0"><br><br>
+						<label for="sold">À venda</label><br>
 						<input type="checkbox" value="false"><br><br>
+						<label for="price">Criação</label><br>
+						<input type="text" value="2016-06-22 19:10:25-07"><br><br>
 					</form>
 					<div class="admin-button-container">
 						<button class="button-outline-secondary" onclick="window.location.href='list.html'">Excluir</button>
