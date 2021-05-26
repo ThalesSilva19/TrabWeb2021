@@ -40,6 +40,18 @@ body {
 	width: 250px;
 }
 
+
+/**********/
+/* Titles */
+/**********/
+
+.page-title{
+	font-size: 25pt;
+	text-align: center;
+	color: var(--main-color);
+	margin: 20px;
+}
+
 /***********/
 /* Buttons */
 /***********/

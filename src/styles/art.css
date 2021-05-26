@@ -1,0 +1,75 @@
+
+/***********/
+/*Art Menu */
+/***********/
+
+.art-menu{
+	padding: 10px;
+	overflow: auto;
+	display: grid;
+  	grid-template-columns: repeat(auto-fit, 290px);
+  	grid-gap: 20px;
+  	justify-content: space-around;
+	list-style-type: None;
+}
+
+/***********/
+/*Art Item */
+/***********/
+
+.art-item{
+	padding:20px;
+	width:250px;
+	background-color:#FFF;
+	border-radius: 10px; 
+}
+
+.art-item *{
+	margin: 5px 0 5px 0;
+}
+
+.art-item img{
+	width:250px;
+	height:250px; 
+}
+
+.art-item .art-name{
+	width: 100%;
+	text-align: center;
+	font-size:14pt;
+	color: #000;
+}
+
+.art-item .art-user{
+	width: 100%;
+	text-align: right;
+	font-size:12pt;
+	color: #D0D0D0;
+}
+
+.art-item .art-price{
+	width: 100%;
+	text-align: left;
+	font-size: 12t;
+	color: #000;
+}
+
+.art-item .art-button{
+	width: 100%;
+	text-align: center;
+}
+
+.art-item button{
+	padding: 5px 20px 5px 20px;
+	background-color: #FFF;
+	text-align: center;
+	border: Solid 1px red; 
+	border-radius: 5px;
+	font-size:12pt;
+	color: red;
+}
+
+.art-item button:hover{
+	background-color: red;
+	color: white;
+}
