@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <title>Sacola</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <link rel="stylesheet" href="../../styles/bag.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-start">
+            <button class="button-main">ARTE FÍSICA</button>
+            <button class="button-main">ARTE DIGITAL</button>
+            <button class="button-main">SACOLA</button>
+            <button class="button-main" onclick="window.location.href='main.html'">ADMIN</button>
+        </div>
+        <div class="navbar-end">
+            <input type="text" placeholder="Pesquisa">
+        </div>
+    </nav>
+    <div class="bag-container">
+        <h2 class='title'>SACOLA</h1>
+        <div class="bag-box">
+            <div class="bag-product">
+                <div class="data">
+                    <img src="../../img/monaLisa.jpg" alt="Mona Lisa">
+                    <div class="right-data">
+                        <div class="product-description">
+                            <h3 class="product-name"><b>Mona Lisa</b></h3>
+                            <h3 class="product-author"><b>Autor:</b> Leonardo DaVinci</h3>
+                            <h3 class="product-owner"><b>Proprietário:</b> @MarcosVinicius23</h3>
+                        </div>
+                        <form action="#" method="POST">
+                            <input type="submit" class="remove-product" value="Remover da sacola">
+                        </form>
+                    </div>
+                </div>
+                <div class="edition">
+                    <button>-</button>
+                    <input type="number" name="quantity" value="1" min="0" step="1">
+                    <button>+</button>
+                </div>
+                <div class="price">
+                    <h3 class="price-text">R$ 20,99</h3>
+                </div>
+            </div>
+            <div class="bag-product">
+                <div class="data">
+                    <img src="../../img/monaLisa.jpg" alt="Mona Lisa">
+                    <div class="right-data">
+                        <div class="product-description">
+                            <h3 class="product-name"><b>Mona Lisa</b></h3>
+                            <h3 class="product-author"><b>Autor:</b> Leonardo DaVinci</h3>
+                            <h3 class="product-owner"><b>Proprietário:</b> @MarcosVinicius23</h3>
+                        </div>
+                        <form action="#" method="POST">
+                            <input type="submit" class="remove-product" value="Remover da sacola">
+                        </form>
+                    </div>
+                </div>
+                <div class="edition">
+                    <button>-</button>
+                    <input type="number" name="quantity" value="1" min="0" step="1">
+                    <button>+</button>
+                </div>
+                <div class="price">
+                    <h3 class="price-text">R$ 20,99</h3>
+                </div>
+            </div>
+            <div class="resume">
+                <h3 class="resume-text">Total: R$ 41,98</h3>
+                <button class="continue-btn">
+                    Continuar
+                </button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

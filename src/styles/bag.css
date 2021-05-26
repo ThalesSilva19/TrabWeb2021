@@ -1,0 +1,137 @@
+.bag-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--background-color);
+}
+
+.title {
+    color: var(--main-color);
+    font-size: 1.5em;
+    text-align: center;
+}
+
+.bag-box {
+    height: 500px;
+    width: 75rem;
+    background-color: #FFF;
+    border-radius: 5px;
+    box-shadow: 0px 4px 4px 0px #00000040;
+}
+
+.bag-product {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: solid 1px var(--color-gray);
+    padding: 16px;
+    margin: 0 8px;
+}
+
+.bag-product .data {
+    display: flex;
+    gap: 8px;
+}
+
+.bag-product .data img {
+    width: 100px;
+    height: auto;
+}
+
+.bag-product .data .right-data {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.product-name, .product-author, .product-owner {
+    color: #404040;
+    font-weight: 400;
+}
+
+.product-author, .product-owner {
+    font-size: 0.875rem;
+}
+
+.remove-product {
+    background-color: #FFF;
+    border: none;
+    font-weight: 600;
+    color: var(--main-color);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.remove-product:hover {
+    text-decoration: underline;
+}
+
+.edition {
+    display: flex;
+    gap: 2px;
+    border-radius: 2px;
+    border: solid 1px var(--color-gray);
+}
+
+.edition button {
+    font-weight: 600;
+    background-color: white;
+    width: 25px;
+    height: 25px;
+    border: none;
+    cursor: pointer;
+    transition: all linear 150ms;
+}
+
+.edition button:hover {
+    background-color: #D0D0D0;
+}
+
+.edition input {
+    width: 25px;
+    text-align: center;
+    border: none;
+}
+
+.price .price-text {
+    color: #404040;
+}
+
+.resume {
+    display: flex;
+    height: 100px;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 16px;
+    margin: 0 8px;
+}
+
+.resume .resume-text {
+    color: #404040;
+}
+
+.resume .continue-btn {
+    background-color: var(--main-color);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 8px 24px;
+    cursor: pointer;
+    transition: all linear 150ms;
+}
+
+.resume .continue-btn:hover {
+    background-color: var(--main-color-light);
+}
+
+input[type=number]::-webkit-inner-spin-button { 
+    -webkit-appearance: none;
+}
+
+input[type=number] { 
+   -moz-appearance: textfield;
+   appearance: textfield;
+}

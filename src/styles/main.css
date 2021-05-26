@@ -2,6 +2,7 @@
 	--main-color: #5D5FEF;
 	--main-color-light: #9899FF;
 	--secondary-color: #D66C6C;
+	--background-color: #F0F0FF;
 	--color-gray: #838383;
 }
 
@@ -25,6 +26,7 @@ body {
 	margin-bottom: 20px;
 	display: block;
 	overflow: hidden;
+	box-shadow: 0px 4px 4px 0px #00000040;
 }
 
 .navbar .navbar-start {
@@ -38,6 +40,10 @@ body {
 .navbar .navbar-end input {
 	margin: 5px 5px;
 	width: 250px;
+	height: 30px;
+	border-radius: 5px;
+	outline: none;
+	border: 1px solid #C0C0C0;
 }
 
 /***********/
