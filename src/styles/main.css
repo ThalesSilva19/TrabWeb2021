@@ -46,6 +46,18 @@ body {
 	border: 1px solid #C0C0C0;
 }
 
+
+/**********/
+/* Titles */
+/**********/
+
+.page-title{
+	font-size: 25pt;
+	text-align: center;
+	color: var(--main-color);
+	margin: 20px;
+}
+
 /***********/
 /* Buttons */
 /***********/
