@@ -1,14 +1,13 @@
-# ArtOnline
+![artonline](https://user-images.githubusercontent.com/48020565/119746874-d5095680-be67-11eb-8ab3-6c1bb147551b.png)
 
-O ArtOnline é uma plataforma para comprar cópias das suas obras de artes dos seus artistas favoritos.
-Sabendo que hoje muito da arte no mundo de hoje é consumida virtualmente, permitimos a compra de arte virtual inspirado pela tecnologia do nft. Você pode comprar artes virtuais e exibir para todo o mundo em nossa plataforma sua incrível coleção. Ou pode apostar em artistas emergentes e ganhar dinheiro revendendo arte.
+O mundo está repleto de artistas online com obras maravilhosas. No  <b>ArtOnline</b> você pode acompanhar o trabalho bem de perto, você pode comprar artes virtuais e exibir para todo o mundo em nossa plataforma sua incrível coleção. Ou pode apostar em artistas emergentes e ganhar dinheiro revendendo arte.
 
-Venha para o ArtOnline, entre no mundo da arte.
+Venha para o ArtOnline, entre no mundo da arte!
 
-**Grupo:**
+**Grupo:**\
 Breno Cunha Queiroz - 11218991\
 Francisco de Freitas Pedrosa - 11215699\
-Thales Willian Dalvi da Silva - 11219196\
+Thales Willian Dalvi da Silva - 11219196
 
 ## Sumário
 - [1.Requisitos](#1-requisitos)
