@@ -1,13 +1,12 @@
-# ArtOnline
+![artonline](https://user-images.githubusercontent.com/48020565/119746874-d5095680-be67-11eb-8ab3-6c1bb147551b.png)
 
-O ArtOnline é uma plataforma para comprar cópias das suas obras de artes dos seus artistas favoritos.
-Sabendo que hoje muito da arte no mundo de hoje é consumida virtualmente, permitimos a compra de arte virtual inspirado pela tecnologia do nft. Você pode comprar artes virtuais e exibir para todo o mundo em nossa plataforma sua incrível coleção. Ou pode apostar em artistas emergentes e ganhar dinheiro revendendo arte.
+O mundo está repleto de artistas online com obras maravilhosas. No  <b>ArtOnline</b> você pode acompanhar o trabalho bem de perto, você pode comprar artes virtuais e exibir para todo o mundo em nossa plataforma sua incrível coleção. Ou pode apostar em artistas emergentes e ganhar dinheiro revendendo arte.
 
-Venha para o ArtOnline, entre no mundo da arte.
+Venha para o ArtOnline, entre no mundo da arte!
 
-**Grupo:**
-Breno Cunha Queiroz - 11218991
-Francisco de Freitas Pedrosa - 11215699
+**Grupo:**\
+Breno Cunha Queiroz - 11218991\
+Francisco de Freitas Pedrosa - 11215699\
 Thales Willian Dalvi da Silva - 11219196
 
 ## Sumário
@@ -49,37 +48,37 @@ Abaixo apresentamos o diagrama de navegação do site. Nas páginas inicial, bus
 </center>
 
 Seguindo o diagrama de navegação, temos as seguintes páginas:\
-Clique em _M_ para ir ao mockup. (criados utilizando [Figma](https://www.figma.com))\
+Clique em _M_ para ir à image do mockup. (criados utilizando [Figma](https://www.figma.com))\
 Clique em _H_ para ir à página html.
 
 **Páginas:**
-- Página Principal ([M](./blob/main/mockup/paginaPrincipal.png), [H](./blob/main/src/pages/index.html))
-- Detalhe Arte
-- Busca
-- Login ([M](./blob/main/mockup/login.png), H)
-- Registro ([M](./blob/main/mockup/registro.png), H)
-- Sacola ([M](./blob/main/mockup/sacola.png), [H](./blob/main/src/pages/public/bag.html))
-	- Checkout
-- Minhas artes
-	- Gerenciar arte existe ([M](./blob/main/mockup/gerenciarArteExistente.png))
-	- Upload nova arte
-- Admin ([M](./blob/main/mockup/admin.png), [H](./blob/main/src/pages/admin/main.html))
-	- Lista Artes ([M](./blob/main/mockup/adminListaArtes.png), [H](./blob/main/src/pages/admin/list.html))
-		- Adicionar Arte
-		- Editar Arte ([M](./blob/main/mockup/adminEditarArte.png), [H](./blob/main/src/pages/admin/edit.html))
-	- Lista Clientes
-		- Adicionar Cliente
-		- Editar Cliente
-	- Lista Admins
-		- Adicionar Admin
-		- Editar Admin
+- Página Principal ([M](./mockup/paginaPrincipal.png), [H](./src/pages/index.html))
+- Detalhe Arte ([M](./mockup/detalheArte.png))
+- Busca (filtro na página inicial)
+- Login ([M](./mockup/login.png), [M mobile](./mockup/loginMobile.png))
+- Registro ([M](./mockup/registro.png), [M mobile](./mockup/registerMobile.png))
+- Sacola ([M](./mockup/sacola.png), [H](./src/pages/public/bag.html))
+	- Checkout ([M](./mockup/checkout.png))
+- Minhas artes ([M](./mockup/minhasArtes.png))
+	- Gerenciar arte existe ([M](./mockup/gerenciarArteExistente.png))
+	- Upload nova arte ([M](./mockup/uploadNovaArte.png))
+- Admin ([M](./mockup/admin.png), [H](./src/pages/admin/main.html))
+	- Lista Artes ([M](./mockup/adminListaArtes.png), [H](./src/pages/admin/list.html))
+		- Adicionar Arte ([M](./mockup/adminAdicionarArte.png))
+		- Editar Arte ([M](./mockup/adminEditarArte.png), [H](./src/pages/admin/edit.html))
+	- Lista Clientes ([M](./mockup/adminListaClientes.png))
+		- Adicionar Cliente ([M](./mockup/adminAdicionarCliente.png))
+		- Editar Cliente ([M](./mockup/adminEditarCliente.png))
+	- Lista Admins ([M](./mockup/adminListaAdmins.png))
+		- Adicionar Admin ([M](./mockup/adminAdicionarAdmin.png))
+		- Editar Admin ([M](./mockup/adminEditarAdmin.png))
 
 ### 2.2 Dados no Servidor
 Todos os dados especificados nos requisitos gerais, e nos requisitos da [seção 1](#1-requisitos) serão armazenados em um banco de dados relacional. Apresentamos abaixo os campos das tabelas mais importantes:
 
 _Art {id, name, description, image, price, quantity, quantity_sold, can_sell, owner_id, creator_id, creation}\
 Customer {id, name, address, phone, email, password, total_received, token, creation}\
-Admin {id, name, phone, username, password, token, creation}_
+Admin {id, name, username, phone, email, password, token, creation}_
 
 Além disso, o servidor irá prover uma API para permitir a comunicação da aplicação com o banco de dados de acordo com as permissões do usuário. Será possível distinguir entre usuário nos requests a partir do token.
 
