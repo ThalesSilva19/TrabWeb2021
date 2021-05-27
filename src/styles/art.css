@@ -3,7 +3,7 @@
 /*Art Menu */
 /***********/
 
-.art-menu{
+.art-menu {
 	padding: 10px;
 	overflow: auto;
 	display: grid;
@@ -17,11 +17,16 @@
 /*Art Item */
 /***********/
 
-.art-item{
-	padding:20px;
-	width:250px;
+.art-item {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 20px;
+	width: 300px;
 	background-color:#FFF;
-	border-radius: 10px; 
+	border-radius: 10px;
+	box-shadow: 0px 4px 4px 0px #00000040;
 }
 
 .art-item *{
@@ -59,7 +64,7 @@
 	text-align: center;
 }
 
-.art-item button{
+.art-item button {
 	padding: 5px 20px 5px 20px;
 	background-color: #FFF;
 	text-align: center;

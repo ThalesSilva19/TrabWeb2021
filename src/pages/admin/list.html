@@ -5,22 +5,40 @@
 		<meta charset="utf-8">
 		<meta neme="viewport" content="width=device-width, initial-scale=1.0">
 
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 		<link rel="preconnect" href="https://fonts.gstatic.com">
 		<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 		<link rel="stylesheet" href="../../styles/main.css">
 		<link rel="stylesheet" href="../../styles/admin.css">
 	</head>
 	<body>
-		<nav class="navbar">
-			<div class="navbar-start">
-				<button class="button-main">ARTES VIRTUAIS</button>
-				<button class="button-main">SACOLA</button>
-				<button class="button-main">MINHAS ARTES</button>
-				<button class="button-main">ADMIN</button>
-				<button class="button-main">SAIR</button>
-			</div>
-			<div class="navbar-end">
-				<input type="text" placeholder="Pesquisa">
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item">
+						<a class="nav-link" href="../index.html">ARTES VIRTUAIS</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="../public/bag.html">SACOLA</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#">MINHAS ARTES</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="./main.html">ADMINISTRADOR</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#">SAIR</a>
+					</li>
+				</ul>
+				<form class="form-inline my-2 my-lg-0">
+					<input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Buscar">
+					<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+				</form>
 			</div>
 		</nav>
 		<div class="admin-content">

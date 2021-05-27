@@ -8,7 +8,7 @@
 
 * {
 	font-family: 'Roboto', sans-serif;
-	font-size: 100%;
+	font-size: 16px;
 	margin: 0px;
 	padding: 0px;
 }
@@ -17,41 +17,46 @@ body {
 	background: #F0F0FF;
 }
 
-/******************/
-/* Navigation bar */
-/******************/
+/*********************************/
+/* Navigation bar with bootstrap */
+/*********************************/
 .navbar {
-	background: var(--main-color);
-	width: 100%;
-	margin-bottom: 20px;
-	display: block;
-	overflow: hidden;
 	box-shadow: 0px 4px 4px 0px #00000040;
 }
 
-.navbar .navbar-start {
-	float: left;
+.bg-light {
+	background-color: var(--main-color)!important;
 }
 
-.navbar .navbar-end {
-	float: right;
+.nav-link {
+	color: white!important;
+	border-bottom: solid 1px var(--main-color);
+	transition: all linear 150ms;
 }
 
-.navbar .navbar-end input {
-	margin: 5px 5px;
-	width: 250px;
-	height: 30px;
-	border-radius: 5px;
-	outline: none;
-	border: 1px solid #C0C0C0;
+.nav-link:hover {
+	border-bottom: solid 1px white;
 }
+
+.btn-outline-success {
+	color: white;
+	border-color: white;
+	transition: all linear 150ms;
+}
+
+.btn-outline-success:hover {
+	border-color: white;
+	background-color: white;
+	color: var(--main-color);
+}
+
 
 
 /**********/
 /* Titles */
 /**********/
 
-.page-title{
+.page-title {
 	font-size: 25pt;
 	text-align: center;
 	color: var(--main-color);
