@@ -83,7 +83,7 @@ Admin {id, name, username, phone, email, password, token, creation}_
 Além disso, o servidor irá prover uma API para permitir a comunicação da aplicação com o banco de dados de acordo com as permissões do usuário. Será possível distinguir entre usuário nos requests a partir do token.
 
 ## 3. Comentários sobre o código
-O código está disponível na pasta `src`. É possível encontrar as páginas html em `src/pages`, imagens locais na `src/img`, e os arquivos de estilização css em `src/styles`. Os arquivos css estão distribuídos de forma à permitir a reutilização de estilos, a maneira que encontramos para fazer isso foi dividir em `main.css` os estilos utilizados em todo o site, em `admin.css` os estilos utilizados só em página de admin, e assim por diante.
+O código está disponível na pasta `src`. É possível encontrar as páginas html em `src/pages`, imagens locais na `src/img`, e os arquivos de estilização css em `src/styles`. Os arquivos css estão distribuídos de forma à permitir a reutilização de estilos, a maneira que encontramos para fazer isso foi dividir em `main.css` os estilos utilizados em todo o site, em `admin.css` os estilos utilizados só em página de admin, e assim por diante. Além disso utilizamos bootstrap para fazer o estilo do navigation bar facilitando na sua utilização e fizemos apenas alguns ajustes de estilo como nas cores.
 
 ## 4. Plano de teste
 Estamos pretendendo utilizar o [jest](https://jestjs.io/pt-BR/) para realizar os testes nas páginas, visto que ele funciona bem com _Vue_ e foi desenvolvido para javascript. Iremos descrever melhor esta seção assim que começarmos a realizar os testes.\
