@@ -7,13 +7,16 @@ import { Route, Switch, BrowserRouter } from 'react-router-dom';
 
 import Home from './pages/Home';
 import Products from './pages/Products';
+import { AuthProvider } from './contexts/AuthContext';
 
 ReactDOM.render(
     <React.StrictMode>
         <BrowserRouter>
             <Switch>
-                <Route exact path='/' component={Home}/>
-                <Route path='/Products' component={Products}/>
+                <AuthProvider>
+                    <Route exact path='/' component={Home}/>
+                    <Route path='/Products' component={Products}/>
+                </AuthProvider>
             </Switch>
         </BrowserRouter>
     </React.StrictMode>,
