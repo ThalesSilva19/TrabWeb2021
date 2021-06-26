@@ -1,7 +1,11 @@
-import './style.css'
+import './style.css';
+
+import Header from '../../components/Header';
 
 export default function Home() {
     return (
-        <div className='home-container'>Essa é a Products</div>
+        <div className='homeContainer'>
+            <Header/>
+        </div>
     );
 }

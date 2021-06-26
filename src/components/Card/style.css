@@ -1,0 +1,38 @@
+.cardContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    width: 250px;
+    border-radius: 10px;
+    padding: 16px;
+}
+
+.cardContainer img {
+    width: 250px;
+    height: 250px;
+    margin: 4px;
+}
+
+.cardContainer p {
+    width: 250px;
+    text-align: right;
+}
+
+.cardContainer h2 {
+    width: 250px;
+    text-align: left;
+}
+
+.cardContainer button {
+    background-color: white;
+    color: red;
+    border: solid 1px red;
+    border-radius: 8px;
+    padding: 4px;
+    cursor: pointer;
+}
+
+.cardContainer button:hover {
+    background-color: #f0f0f0;
+}

@@ -1,0 +1,54 @@
+.headerContainer {
+    background-color: var(--main-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 40px;
+    padding: 0 16px;
+    border-bottom: solid 2px var(--main-color-light);
+
+    /*Shadow box*/
+    -webkit-box-shadow: 0px 10px 13px -7px var(--main-color), 5px 5px 15px 5px rgba(0,0,0,0); 
+    box-shadow: 0px 10px 13px -7px var(--main-color), 5px 5px 15px 5px rgba(0,0,0,0);
+}
+
+.headerContainer nav a {
+    color: white;
+    margin: 12px;
+}
+
+.headerContainer nav a:hover {
+    border-bottom: solid 1px white;
+}
+
+.headerContainer form input {
+    padding: 4px;
+    border-radius: 10px;
+    outline: none;
+    border: none;
+}
+
+.headerContainer form input:focus {
+    outline: none;
+}
+
+.headerContainer form {
+    display: flex;
+    gap: 8px;
+}
+
+.headerContainer form button {
+    padding: 4px;
+    background-color: var(--main-color);
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.headerContainer form button:hover {
+    border-bottom: solid 1px white;
+}
+
+.headerContainer form button:focus {
+    outline: none;
+}
