@@ -3,7 +3,6 @@ import { AuthContext } from "../../contexts/AuthContext";
 import './style.css';
 
 export default function Header() {
-
     const { isLogged, isAdmin } = useContext(AuthContext)
 
     return (
@@ -13,7 +12,7 @@ export default function Header() {
                 <a href="/cart">Sacola</a>
                 {
                     isAdmin && (
-                        <a href="/adm-page">
+                        <a href="/admin">
                             Administrador
                         </a>
                     )
@@ -36,8 +35,7 @@ export default function Header() {
                 }
             </nav>
             <form>
-                <input type="text" name="search" id="search" placeholder="pesquisar"/>
-                <button type="submit">P</button>
+                <input type="text" name="search" id="search" placeholder="Pesquisar"/>
             </form>
         </div>
     )

@@ -7,6 +7,8 @@ import { Route, Switch, BrowserRouter } from 'react-router-dom';
 
 import Home from './pages/Home';
 import Products from './pages/Products';
+import Admin from './pages/Admin';
+import AdminList from './pages/AdminList';
 import { AuthProvider } from './contexts/AuthContext';
 
 ReactDOM.render(
@@ -15,7 +17,9 @@ ReactDOM.render(
             <Switch>
                 <AuthProvider>
                     <Route exact path='/' component={Home}/>
-                    <Route path='/Products' component={Products}/>
+                    <Route path='/products' component={Products}/>
+                    <Route exact path='/admin' component={Admin}/>
+					<Route exact path='/admin/:type' component={AdminList}/>
                 </AuthProvider>
             </Switch>
         </BrowserRouter>

@@ -92,6 +92,10 @@ Para testar o backend iremos utilizar o [Postman](https://www.postman.com/), fut
 ## 5. Resultado dos testes
 
 ## 6. Procedimentos para executar
+```
+npm install
+npm start
+```
 
 ## 7. Problemas
 
