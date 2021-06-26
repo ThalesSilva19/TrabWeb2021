@@ -17,6 +17,7 @@
 .cardContainer p {
     width: 250px;
     text-align: right;
+    color: var(--color-gray);
 }
 
 .cardContainer h2 {
