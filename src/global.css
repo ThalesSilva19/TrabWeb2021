@@ -1,6 +1,17 @@
+:root {
+	--main-color: #5D5FEF;
+	--main-color-light: #9899FF;
+	--secondary-color: #D66C6C;
+	--background-color: #F0F0FF;
+	--color-gray: #838383;
+}
+
 * {
-    margin: 0;
-    padding: 0;
+    font-family: 'Roboto', sans-serif;
+	font-size: 16px;
+	margin: 0px;
+	padding: 0px;
+    text-decoration: none;
 }
 
 body {
@@ -10,6 +21,7 @@ body {
         sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    background: #F0F0FF;
 }
 
 code {
