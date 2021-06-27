@@ -9,6 +9,9 @@ import Home from './pages/Home';
 import Products from './pages/Products';
 import Admin from './pages/Admin';
 import AdminList from './pages/AdminList';
+import AdminEditArt from './pages/AdminEditArt';
+import AdminEditCustomer from './pages/AdminEditCustomer';
+import AdminEditAdmin from './pages/AdminEditAdmin';
 import { AuthProvider } from './contexts/AuthContext';
 
 ReactDOM.render(
@@ -19,6 +22,9 @@ ReactDOM.render(
                     <Route exact path='/' component={Home}/>
                     <Route path='/products' component={Products}/>
                     <Route exact path='/admin' component={Admin}/>
+					<Route path='/admin/arte/:id' component={AdminEditArt}/>
+					<Route path='/admin/cliente/:id' component={AdminEditCustomer}/>
+					<Route path='/admin/admin/:id' component={AdminEditAdmin}/>
 					<Route exact path='/admin/:type' component={AdminList}/>
                 </AuthProvider>
             </Switch>
