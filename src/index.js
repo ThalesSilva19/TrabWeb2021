@@ -7,6 +7,7 @@ import { Route, Switch, BrowserRouter } from 'react-router-dom';
 
 import Home from './pages/Home';
 import Products from './pages/Products';
+import ProductDetails from './pages/ProductDetails'
 import Admin from './pages/Admin';
 import AdminList from './pages/AdminList';
 import AdminEditArt from './pages/AdminEditArt';
@@ -20,7 +21,8 @@ ReactDOM.render(
             <Switch>
                 <AuthProvider>
                     <Route exact path='/' component={Home}/>
-                    <Route path='/products' component={Products}/>
+                    <Route exact path='/products' component={Products}/>
+                    <Route exact path='/products/:id' component={ProductDetails}/>
                     <Route exact path='/admin' component={Admin}/>
 					<Route path='/admin/arte/:id' component={AdminEditArt}/>
 					<Route path='/admin/cliente/:id' component={AdminEditCustomer}/>

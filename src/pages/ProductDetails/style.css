@@ -1,0 +1,55 @@
+.productDetailsContainer .productBox {
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 50px 150px;
+    height: 450px;
+    padding: 25px;
+    border-radius: 10px;
+    gap: 25px;
+
+    -webkit-box-shadow: 0px 10px 13px -7px #888, 5px 5px 15px 5px rgba(0,0,0,0);
+    box-shadow: 0px 10px 13px -7px #888, 5px 5px 15px 5px rgba(0,0,0,0);
+}
+
+.productDetailsContainer .productBox .productImg {
+    height: 450px;
+    width: 450px;
+    background-color: lightgray;
+}
+
+.productDetailsContainer .productBox .productData {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    flex: 1;
+    height: 100%;
+}
+
+.productDetailsContainer .productBox .productData .productName, .productDescription {
+    text-align: center;
+}
+
+.productDetailsContainer .productBox .productData .productName {
+    font-size: 1.5rem;
+}
+
+.productDetailsContainer .productBox .productData .productPrice {
+    text-align: center;
+    font-size: 1.375rem;
+}
+
+.productDetailsContainer .productBox .productData .productButton {
+    background-color: white;
+    color: red;
+    border: solid 1px red;
+    border-radius: 8px;
+    padding: 4px;
+    cursor: pointer;
+}
+
+.productDetailsContainer .productBox .productData .productButton:hover {
+    background-color: #f0f0f0;
+}
