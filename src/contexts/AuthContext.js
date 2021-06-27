@@ -12,7 +12,7 @@ export function AuthProvider( {children} ) {
     useEffect(() => {
         // Pegamos o usuário aqui para carregar a página
         var auxUser = {
-            name: 'Thales Silva',
+            name: 'thales',
             email: 'thales.wds2019@usp.br',
             password: '1234',
             isAdmin: true,

@@ -3,7 +3,7 @@ import { AuthContext } from "../../contexts/AuthContext";
 import './style.css';
 
 export default function Header() {
-    const { isLogged, isAdmin } = useContext(AuthContext)
+    const { isLogged, isAdmin, user } = useContext(AuthContext)
 
     return (
         <div className="headerContainer">
@@ -20,7 +20,7 @@ export default function Header() {
                 {
                     isLogged ? (
                         <>
-                            <a href="/my-arts">
+                            <a href={"/users/" + user.name}>
                                 Minhas Artes
                             </a>
                             <a href="/logout">
