@@ -1,12 +1,21 @@
 import { useContext } from 'react';
 import { AuthContext } from "../../contexts/AuthContext";
+import { useHistory } from "react-router-dom";
 import './style.css';
 
 export default function Card(props) {
-    const { user } = useContext(AuthContext)
-	console.log(user,props.belong)
-	var my = user?.nick != null  && user.nick === props.belong
-	var inSale = props.price != 0
+    const { user } = useContext(AuthContext);
+	console.log(user,props.belong);
+	var my = user?.nick != null && user.nick === props.belong;
+	var inSale = props.price != 0;
+
+	var history = useHistory();
+
+	function handleClick() {
+		console.log(props.id);
+		history.push(`/products/${props.id}`);
+	}
+
     return (
         <div className="cardContainer">
             <img src={props.imgsrc} alt={props.name}/>
@@ -19,7 +28,7 @@ export default function Card(props) {
 			}
 			{ my 
 				? <button>Pertence à Mim</button>
-				: <button>Comprar</button>
+				: <button onClick={handleClick}>Comprar</button>
 			}
         </div>
     );

@@ -30,9 +30,9 @@ ReactDOM.render(
                     <Route exact path='/admin' component={Admin}/>
                     <Route exact path='/login' component={Login}/>
                     <Route exact path='/logout' component={Logout}/>
-					<Route path='/admin/arte/:id' component={AdminEditArt}/>
-					<Route path='/admin/cliente/:id' component={AdminEditCustomer}/>
-					<Route path='/admin/admin/:id' component={AdminEditAdmin}/>
+					<Route exact path='/admin/arte/:id' component={AdminEditArt}/>
+					<Route exact path='/admin/cliente/:id' component={AdminEditCustomer}/>
+					<Route exact path='/admin/admin/:id' component={AdminEditAdmin}/>
 					<Route exact path='/admin/:type' component={AdminList}/>
                 </AuthProvider>
             </Switch>
