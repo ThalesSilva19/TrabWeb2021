@@ -3,7 +3,8 @@ import { AuthContext } from "../../contexts/AuthContext";
 import './style.css';
 
 export default function Header() {
-    const { isLogged, isAdmin, user } = useContext(AuthContext)
+    const { isLogged, isAdmin, user, signOut } = useContext(AuthContext)
+	console.log(user)
 
     return (
         <div className="headerContainer">

@@ -11,6 +11,11 @@ import ProductDetails from './pages/ProductDetails'
 import Admin from './pages/Admin';
 import AdminList from './pages/AdminList';
 import User from './pages/User';
+import AdminEditArt from './pages/AdminEditArt';
+import AdminEditCustomer from './pages/AdminEditCustomer';
+import AdminEditAdmin from './pages/AdminEditAdmin';
+import Login from './pages/Login';
+import Logout from './pages/Logout';
 import { AuthProvider } from './contexts/AuthContext';
 
 ReactDOM.render(
@@ -23,6 +28,11 @@ ReactDOM.render(
                     <Route exact path='/products/:id' component={ProductDetails}/>
                     <Route exact path='/users/:user' component={User}/>
                     <Route exact path='/admin' component={Admin}/>
+                    <Route exact path='/login' component={Login}/>
+                    <Route exact path='/logout' component={Logout}/>
+					<Route path='/admin/arte/:id' component={AdminEditArt}/>
+					<Route path='/admin/cliente/:id' component={AdminEditCustomer}/>
+					<Route path='/admin/admin/:id' component={AdminEditAdmin}/>
 					<Route exact path='/admin/:type' component={AdminList}/>
                 </AuthProvider>
             </Switch>

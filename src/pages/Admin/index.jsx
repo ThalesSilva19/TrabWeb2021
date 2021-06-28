@@ -45,7 +45,7 @@ export default function Admin() {
 					</thead>
 					<tbody>
 						<tr>
-							<td><a href="/admin/arte">Arte Digital</a></td>
+							<td><a href="/admin/arte">Arte Virtual</a></td>
 							<td class="admin-table-button"><a href="/admin/arte/adicionar">Adicionar</a></td>
 							<td class="admin-table-button"><a href="/admin/arte">Ver todos</a></td>
 						</tr>
