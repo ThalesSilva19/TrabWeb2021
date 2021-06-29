@@ -27,7 +27,7 @@ export default function Login(props) {
 	}
 
 	if(isLogged){
-		history.push('/home')
+		history.push('/')
 	}
 
 
@@ -40,18 +40,18 @@ export default function Login(props) {
 				<br/>
 				<br/>
 				<p>Email:</p>
-				<input id='email' type='text' placeholde='thecollector@gmail.com'/><br/>
+				<input id='email' type='text' placeholder='thecollector@gmail.com'/><br/>
 				<br/>
 				<br/>
 				<p>Senha:</p>
-				<input id='password' type='password' placeholde='1234'/><br/>
+				<input id='password' type='password' placeholder='1234'/><br/>
 				<br/>
 				<br/>
 				<button onClick={login}>Fazer Login</button><br/>
 				<br/>
 				<p> 
-					<span className='left'>Esqueceu sua senha?</span>
-					<span className='right'>Cadastre-se</span>
+					<a className='left'>Esqueceu sua senha?</a>
+					<a href='/register' className='right'>Cadastre-se</a>
 				</p>
             </div>
         </div>

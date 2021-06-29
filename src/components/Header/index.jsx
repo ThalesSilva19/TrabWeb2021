@@ -21,7 +21,7 @@ export default function Header() {
                 {
                     isLogged ? (
                         <>
-                            <a href={"/users/" + user.name}>
+                            <a href={"/collection/" + user.name}>
                                 Minhas Artes
                             </a>
                             <a href="/logout">

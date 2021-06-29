@@ -7,7 +7,7 @@ export const AuthContext = createContext({});
 export function AuthProvider( {children} ) {
 
 	const [admins, setAdmins] = AdminLocalStorage()
-	const [users, setUsers] = CustomerLocalStorage()
+	const [users, setUsers, addRegister] = CustomerLocalStorage()
     const [user, setUser] = useState(
 		JSON.parse(localStorage.getItem('auth')) || null
 	);
@@ -19,14 +19,28 @@ export function AuthProvider( {children} ) {
 		localStorage.setItem('auth', JSON.stringify(user));
     }, [user]);
 
+	
+	function signUp(name,address,phone,email,password,nickname){
+		if(addRegister(name,address,phone,email,password,nickname)){
+			var auxUser ={
+				name: nickname,
+				email: email,
+				isAdmin: false
+			}
+			setUser(auxUser);
+			return true
+		}
+		else{
+			return false
+		}
+	}
+
    	function signIn(email, password) {
        	var emailUser = users.filter(a => { return a.email === email })
-		console.log(emailUser)
 		if(emailUser.length != 1){ 
 			return false;
 		}
 		if(emailUser[0].password === password){
-			console.log(emailUser)
 			var auxUser ={
 				name: emailUser[0].nickname,
 				email: emailUser[0].email,
@@ -45,7 +59,7 @@ export function AuthProvider( {children} ) {
     }
 
     return (
-        <AuthContext.Provider value={{ user, isLogged, isAdmin, signin : signIn, signout: signOut}}>
+        <AuthContext.Provider value={{ user, isLogged, isAdmin, signin : signIn, signout: signOut, signup : signUp}}>
             {children}
         </AuthContext.Provider>
     );

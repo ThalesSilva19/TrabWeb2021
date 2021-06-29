@@ -26,3 +26,18 @@ export const ArtsByOwner = (nick) => {
 		return a.belong	=== nick
 	})] 
 };
+
+export const ArtsByCreator = (nick) => {
+	const [arts] = ArtLocalStorage();
+	return [arts.filter((a) => {
+		return a.creator === nick
+	})] 
+};
+
+export const ArtById = (id) => {
+	const [arts] = ArtLocalStorage();
+	var art = arts.filter((a) => {
+		return a.id == id
+	})
+	return [art[0]] 
+};

@@ -1,6 +1,8 @@
-import { useState, useEffect } from 'react'
+import { useState, useContext, useEffect } from 'react'
+import { AuthContext } from "../contexts/AuthContext";
 
 export const CustomerLocalStorage = () => {
+    const { signin} = useContext(AuthContext)
 	const [value, setValue] = useState(
 		JSON.parse(localStorage.getItem('customers')) || 
 		[
@@ -13,7 +15,25 @@ export const CustomerLocalStorage = () => {
 
 	useEffect(() => {
 		localStorage.setItem('customers',JSON.stringify(value));
+		console.log('++++++++++++++++++++')
+		console.log(value)
+		console.log('++++++++++++++++++++')
 	}, [value]);
 
-	return [value, setValue];
+	function addRegister(name,adress,phone,email,password,nickname){
+		if(value.filter( a => {return a.email == email}).length > 0) return false;  
+		if(value.filter( a => {return a.name == name}).length > 0) return false;  
+		if(value.filter( a => {return a.nickname == nickname}).length > 0) return false;  
+		var id = value.length;
+		var creation = Date().toString()
+		var totalReceived = 0.0
+		var token = '1234abcd'
+		var newUser = {id,name,adress,phone,email,password,nickname,totalReceived,token,creation}
+		var newValue = value.concat([newUser]);
+		setValue(newValue)
+		return true;
+	}
+
+	return [value, setValue,addRegister];
 };
+
