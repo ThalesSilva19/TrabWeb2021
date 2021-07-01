@@ -1,0 +1,45 @@
+.checkoutContainer .checkoutTitle {
+    color: var(--main-color);
+    padding-top: 32px;
+}
+
+.checkoutBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    margin: 32px 128px;
+    border-radius: 10px;
+    padding: 16px;
+    gap: 16px;
+
+    -webkit-box-shadow: 0px 10px 13px -7px #888, 5px 5px 15px 5px rgba(0,0,0,0);
+    box-shadow: 0px 10px 13px -7px #888, 5px 5px 15px 5px rgba(0,0,0,0);
+}
+
+.checkoutBox .checkoutPrice {
+    color: #888;
+}
+
+.checkoutBox .checkoutLabel {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    gap: 4px;
+}
+
+.checkoutBox .checkoutButton {
+    background-color: white;
+    color: red;
+    border: solid 1px red;
+    border-radius: 8px;
+    padding: 4px;
+    width: 150px;
+    height: 2.5rem;
+    cursor: pointer;
+}
+
+.checkoutBox .checkoutButton:hover {
+    background-color: #f0f0f0;
+}

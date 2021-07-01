@@ -18,6 +18,7 @@ import AdminEditAdmin from './pages/AdminEditAdmin';
 import Login from './pages/Login';
 import Logout from './pages/Logout';
 import Register from './pages/Register';
+import Checkout from './pages/Checkout';
 import { AuthProvider } from './contexts/AuthContext';
 
 ReactDOM.render(
@@ -38,6 +39,7 @@ ReactDOM.render(
 					<Route exact path='/admin/cliente/:id' component={AdminEditCustomer}/>
 					<Route exact path='/admin/admin/:id' component={AdminEditAdmin}/>
 					<Route exact path='/admin/:type' component={AdminList}/>
+                    <Route exact path='/checkout' component={Checkout}/>
                 </AuthProvider>
             </Switch>
         </BrowserRouter>
