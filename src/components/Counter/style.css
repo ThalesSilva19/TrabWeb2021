@@ -1,3 +1,13 @@
 .counterContainer {
+	width: 100px;
+	border: 1px solid var(--color-dark-gray);
+	border-radius: 4px;
     display: flex;
+	align-items: center;
+}
+
+.counterButton {
+	background-color: white;
+	color: var(--color-dark-gray);
+	cursor: pointer;
 }
