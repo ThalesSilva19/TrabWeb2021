@@ -36,16 +36,18 @@ export function AuthProvider( {children} ) {
 	}
 
    	function signIn(email, password) {
-       	var emailUser = users.filter(a => { return a.email === email })
+       	let emailUser = users.filter(a => ( a.email == email ));
+
 		if(emailUser.length != 1){ 
 			return false;
 		}
-		if(emailUser[0].password === password){
+		if(emailUser[0].password == password){
 			var auxUser ={
 				name: emailUser[0].nickname,
 				email: emailUser[0].email,
 				isAdmin: admins.filter(a => {return a.email == emailUser[0].email}).length > 0
 			}
+			console.log(auxUser);
 			setUser(auxUser);
 			return true;
 		}
@@ -59,7 +61,7 @@ export function AuthProvider( {children} ) {
     }
 
     return (
-        <AuthContext.Provider value={{ user, isLogged, isAdmin, signin : signIn, signout: signOut, signup : signUp}}>
+        <AuthContext.Provider value={{ user, isLogged, isAdmin, signin:signIn, signout:signOut, signup:signUp}}>
             {children}
         </AuthContext.Provider>
     );

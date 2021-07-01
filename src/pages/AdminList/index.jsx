@@ -26,10 +26,10 @@ export default function AdminList(props) {
 	else if(type === "admin")
 	{
 		title = "Administradores";
-		columns  = ["Id","Nome", "Username", "Telefone", "Email"];
+		columns  = ["Id", "Email"];
 		const [admins] = AdminLocalStorage();
 		admins.forEach(admin => {
-			rows.push([admin.id, admin.name, admin.username, admin.phone, admin.email]);
+			rows.push([admin.id, admin.email]);
 		});
 	}
 	else if(type === "arte")
