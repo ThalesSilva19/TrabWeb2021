@@ -22,11 +22,11 @@ export default function ProductDetails(props) {
     }*/
 	console.log(product)
 
-	let product;
+	/*let product;
 	arts.forEach((a) => {
 		if(a.id == id)
 			product = a;
-	})
+	})*/
 	let inSale = product.price != 0;
 
 	useEffect(() => {

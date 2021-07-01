@@ -18,8 +18,6 @@ export default function Card(props) {
 
     return (
         <div className="cardContainer">
-            <img src={props.imgsrc} alt={props.name}/>
-            <h3>{props.name}</h3>
             <img src={props.image} alt={props.name}/>
             <h3 className="cardTitle">{props.name}</h3>
             <p>Pertence a <a href={'/collection/'+props.belong}>@{props.belong}</a></p>
