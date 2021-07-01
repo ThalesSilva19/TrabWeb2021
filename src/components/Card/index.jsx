@@ -18,14 +18,16 @@ export default function Card(props) {
 
     return (
         <div className="cardContainer">
-            <img src={props.imgsrc} alt={props.name}/>
-            <h3>{props.name}</h3>
+            <img src={props.image} alt={props.name}/>
+            <h3 className="cardTitle">{props.name}</h3>
             <p>Pertence a @{props.belong}</p>
             <p>Feito por @{props.creator}</p>
+			<div className="cardPriceContainer">
 			{ inSale
-            	? <h2>R${props.price}</h2>
+            	? <h2>R${props.price.toFixed(2)}</h2>
             	: <h2>Não está a venda</h2>
 			}
+			</div>
 			{ my 
 				? <button>Pertence à Mim</button>
 				: <button onClick={handleClick}>Comprar</button>

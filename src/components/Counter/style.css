@@ -8,6 +8,12 @@
 
 .counterButton {
 	background-color: white;
+	border: none;
 	color: var(--color-dark-gray);
 	cursor: pointer;
+}
+
+.counterButton:disabled {
+	color: #c0c0c0;
+	cursor: default;
 }

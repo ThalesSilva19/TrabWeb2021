@@ -7,7 +7,6 @@ import { ArtLocalStorage } from '../../localStorage/artLocalStorage';
 import { CartLocalStorage } from '../../localStorage/cartLocalStorage';
 
 const CartItem = (props) => {
-	const [cart] = CartLocalStorage();
 	const [arts] = ArtLocalStorage();
     const [counter, setCounter] = useState(props.quantity);
 	const history = useHistory();
@@ -22,13 +21,13 @@ const CartItem = (props) => {
 
 	const setQuantity = async (qty) => {
 		// Update cart
-		for(let i=0;i<cart.length;i++)
+		for(let i=0;i<props.cart.length;i++)
 		{
-			if(cart[i].id==props.id)
+			if(props.cart[i].id==props.id)
 			{
 				let newCart = [];
-				cart.forEach(c=>newCart.push({...c}))
-				newCart[i] = {...cart[i], quantity:qty};
+				props.cart.forEach(c=>newCart.push({...c}))
+				newCart[i] = {...props.cart[i], quantity:qty};
 				await props.setCart(newCart);
 			}
 		}
@@ -38,7 +37,7 @@ const CartItem = (props) => {
 	const removeCartItem = async ()=> {
 		// Remove art from cart
 		let newCart = [];
-		cart.filter(c=>c.id!=props.id).forEach(c=>newCart.push({...c}));
+		props.cart.filter(c=>c.id!=props.id).forEach(c=>newCart.push({...c}));
 		await props.setCart(newCart);
 	}
 
@@ -110,7 +109,7 @@ export default function Cart() {
 
 			<div className="cart-content">
 				{
-					cart.map(item => (<CartItem key={item.id} {...item} setCart={setCart}/>))
+					cart.map(item => (<CartItem key={item.id} {...item} cart={cart} setCart={setCart}/>))
 				}
 				<div className="cart-content-footer">
 					<div className="cart-content-footer-text">
