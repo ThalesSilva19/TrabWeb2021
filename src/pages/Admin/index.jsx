@@ -1,4 +1,3 @@
-import './style.css'
 import '../../styles/admin.css'
 import Header from '../../components/Header';
 

@@ -1,6 +1,6 @@
 .checkoutContainer .checkoutTitle {
     color: var(--main-color);
-    padding-top: 32px;
+    padding-top: 20px;
 }
 
 .checkoutBox {
@@ -9,7 +9,9 @@
     justify-content: center;
     align-items: center;
     background-color: white;
-    margin: 32px 128px;
+	margin: auto;
+	margin-top: 10px;
+	max-width: 1200px;
     border-radius: 10px;
     padding: 16px;
     gap: 16px;

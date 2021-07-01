@@ -42,14 +42,24 @@
 }
 
 .productDetailsContainer .productBox .productData .productButton {
-    background-color: white;
-    color: red;
-    border: solid 1px red;
+	width: 150px;
+    background-color: var(--main-color);
+    color: white;
+    border: none;
     border-radius: 8px;
-    padding: 4px;
+    padding: 8px;
     cursor: pointer;
 }
 
 .productDetailsContainer .productBox .productData .productButton:hover {
-    background-color: #f0f0f0;
+    background-color: var(--main-color-light);
+}
+
+.productDetailsContainer .productBox .productData .productButton:disabled {
+    background-color: #c0c0c0;
+    cursor: default;
+}
+
+.productDetailsContainer .productBox .productData .productButton:disabled:hover {
+    background-color: #c0c0c0;
 }
