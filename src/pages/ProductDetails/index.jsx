@@ -1,5 +1,6 @@
 import './style.css';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
+import { AuthContext } from "../../contexts/AuthContext";
 import { useHistory } from "react-router-dom";
 import Counter from '../../components/Counter';
 import Header from '../../components/Header';
@@ -7,26 +8,14 @@ import { ArtLocalStorage,ArtById} from '../../localStorage/artLocalStorage';
 import { CartLocalStorage } from '../../localStorage/cartLocalStorage';
 
 export default function ProductDetails(props) {
+    const { isLogged, isAdmin, user, signOut } = useContext(AuthContext)
 	const [cart, setCart] = CartLocalStorage();
 	const [arts] = ArtLocalStorage();
 	const history = useHistory();
     const [counter, setCounter] = useState(1);
     const id = props.match.params.id;
 	const product = ArtById(id)[0]
-    /*const product = {
-        imgscr: "",
-        name: "Product 321",
-        belong: "RandomBelong",
-        author: "RandomAuthor",
-        price: 56.99,
-    }*/
 	console.log(product)
-
-	/*let product;
-	arts.forEach((a) => {
-		if(a.id == id)
-			product = a;
-	})*/
 	let inSale = product.price != 0;
 
 	useEffect(() => {
@@ -48,7 +37,7 @@ export default function ProductDetails(props) {
 				maxId = c.id;
 			newCart.push({...c});
 		});
-		newCart.push({id:maxId+1, nickname:"breno", art_id:id, quantity:counter})
+		newCart.push({id:maxId+1, nickname:user.name, art_id:id, quantity:counter})
 		await setCart(newCart);
 		history.push("/cart");
 	}

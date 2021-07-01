@@ -26,8 +26,24 @@
 	cursor: pointer;
 }
 
+.cart-empty-text {
+	color: var(--color-dark-gray);
+	font-size: 1.2em;
+	text-align: center;
+	padding: 20px;
+}
+
 .cart-content .cart-content-footer button:hover{
 	background-color: var(--main-color-light);
+}
+
+.cart-content .cart-content-footer button:disabled{
+	background-color: #ccc;
+	cursor: default;
+}
+
+.cart-content .cart-content-footer button:hover:disabled{
+	background-color: #ccc;
 }
 
 
