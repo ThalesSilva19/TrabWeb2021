@@ -26,7 +26,7 @@ export default function Counter(props) {
 			{ ((props.minVal!=undefined && counter<=props.minVal) || (counter<=1)) &&
             	<button className="counterButton" onClick={subtractCounter} disabled>-</button>
 			}
-			<p>{counter}</p>
+			<p className="counterNumber">{counter}</p>
 			{ (props.maxVal==undefined || counter<props.maxVal) && 
             	<button className="counterButton" onClick={addCounter}>+</button>
 			}

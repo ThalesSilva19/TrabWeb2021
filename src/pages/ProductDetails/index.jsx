@@ -45,7 +45,7 @@ export default function ProductDetails(props) {
     return (
 		<div className="productDetailsContainer">
             <Header/>
-            <div className="productBox">
+            <div className="productDetailsBox">
                 <img className="productImg" src={product.image} alt={product.name}/>
                 <div className="productData">
                     <div>
