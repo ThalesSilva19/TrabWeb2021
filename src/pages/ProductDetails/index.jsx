@@ -13,20 +13,8 @@ export default function ProductDetails(props) {
     const [counter, setCounter] = useState(1);
     const id = props.match.params.id;
 	const product = ArtById(id)[0]
-    /*const product = {
-        imgscr: "",
-        name: "Product 321",
-        belong: "RandomBelong",
-        author: "RandomAuthor",
-        price: 56.99,
-    }*/
 	console.log(product)
 
-	/*let product;
-	arts.forEach((a) => {
-		if(a.id == id)
-			product = a;
-	})*/
 	let inSale = product.price != 0;
 
 	useEffect(() => {
@@ -54,7 +42,7 @@ export default function ProductDetails(props) {
 	}
 
     return (
-        <div className="productDetailsContainer">
+		<div className="productDetailsContainer">
             <Header/>
             <div className="productBox">
                 <img className="productImg" src={product.image} alt={product.name}/>
@@ -83,5 +71,5 @@ export default function ProductDetails(props) {
                 </div>
             </div>
         </div>
-    )
+	)
 }
