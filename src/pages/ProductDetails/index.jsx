@@ -43,7 +43,7 @@ export default function ProductDetails(props) {
 	}
 
     return (
-        <div className="productDetailsContainer">
+		<div className="productDetailsContainer">
             <Header/>
             <div className="productBox">
                 <img className="productImg" src={product.image} alt={product.name}/>
@@ -72,5 +72,5 @@ export default function ProductDetails(props) {
                 </div>
             </div>
         </div>
-    )
+	)
 }

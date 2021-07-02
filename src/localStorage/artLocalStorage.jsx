@@ -17,7 +17,26 @@ export const ArtLocalStorage = () => {
 		localStorage.setItem('arts', JSON.stringify(value));
 	}, [value]);
 
-	return [value, setValue];
+	async function addArt(name,user,description, price, quantity){
+		var id = value.length;
+		var newArt = {
+			id,
+			name,
+			description,
+			image:"https://addons-media.operacdn.com/media/CACHE/images/themes/55/48355/1.1-rev1/images/61dabebd-db81-4ea2-994f-9f5048af4b62/b1bf89e8bb58418d2b5ae34ebb3dd572.jpg",
+			belong: user,
+			creator: user,
+			quantity: quantity,
+			quantitySold:0,
+			price:price,
+			creation:Date().toString()
+		}
+		var newValue = value.concat([newArt]);
+		await setValue(newValue)
+		return id;
+	}
+
+	return [value, setValue,addArt];
 };
 
 export const ArtsByOwner = (nick) => {

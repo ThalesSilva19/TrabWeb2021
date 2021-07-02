@@ -20,6 +20,7 @@ import Logout from './pages/Logout';
 import Register from './pages/Register';
 import Cart from './pages/Cart';
 import Checkout from './pages/Checkout';
+import NewArt from './pages/NewArt';
 import { AuthProvider } from './contexts/AuthContext';
 
 ReactDOM.render(
@@ -28,7 +29,6 @@ ReactDOM.render(
             <Switch>
                 <AuthProvider>
                     <Route exact path='/' component={Home}/>
-                    <Route exact path='/products' component={Products}/>
                     <Route exact path='/products/:id' component={ProductDetails}/>
                     <Route exact path='/artist/:user' component={Artist}/>
                     <Route exact path='/collection/:user' component={Collection}/>
@@ -42,6 +42,7 @@ ReactDOM.render(
 					<Route exact path='/admin/:type' component={AdminList}/>
                     <Route exact path='/cart' component={Cart}/>
                     <Route exact path='/checkout' component={Checkout}/>
+                    <Route exact path='/new' component={NewArt}/>
                 </AuthProvider>
             </Switch>
         </BrowserRouter>
