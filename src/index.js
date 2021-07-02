@@ -10,12 +10,14 @@ import Products from './pages/Products';
 import ProductDetails from './pages/ProductDetails'
 import Admin from './pages/Admin';
 import AdminList from './pages/AdminList';
-import User from './pages/User';
+import Artist from './pages/Artist';
+import Collection from './pages/Collection';
 import AdminEditArt from './pages/AdminEditArt';
 import AdminEditCustomer from './pages/AdminEditCustomer';
 import AdminEditAdmin from './pages/AdminEditAdmin';
 import Login from './pages/Login';
 import Logout from './pages/Logout';
+import Register from './pages/Register';
 import Cart from './pages/Cart';
 import Checkout from './pages/Checkout';
 import { AuthProvider } from './contexts/AuthContext';
@@ -27,10 +29,12 @@ ReactDOM.render(
                 <AuthProvider>
                     <Route exact path='/' component={Home}/>
                     <Route exact path='/products/:id' component={ProductDetails}/>
-                    <Route exact path='/users/:user' component={User}/>
+                    <Route exact path='/artist/:user' component={Artist}/>
+                    <Route exact path='/collection/:user' component={Collection}/>
                     <Route exact path='/admin' component={Admin}/>
                     <Route exact path='/login' component={Login}/>
                     <Route exact path='/logout' component={Logout}/>
+                    <Route exact path='/register' component={Register}/>
 					<Route exact path='/admin/arte/:id' component={AdminEditArt}/>
 					<Route exact path='/admin/cliente/:id' component={AdminEditCustomer}/>
 					<Route exact path='/admin/admin/:id' component={AdminEditAdmin}/>

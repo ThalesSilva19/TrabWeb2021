@@ -1,0 +1,22 @@
+.pageTitle {
+	font-size: 1.5em;	
+	text-align: center;
+	padding-top: 20px;
+	color: var(--main-color);
+}
+
+.cardList {
+	padding: 10px;
+	overflow: auto;
+	display: grid;
+  	grid-template-columns: repeat(auto-fit, 290px);
+  	grid-gap: 20px;
+  	justify-content: space-around;
+	list-style-type: None;
+}
+
+.addButton {
+	width: 300px;
+	float: center;
+	margin: auto;
+}

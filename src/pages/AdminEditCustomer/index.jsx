@@ -107,22 +107,15 @@ export default function AdminEditCustomer(props) {
 		<>
 			<Header/>
 			<div className="admin-content">
-				<h2 className="admin-title">Editar Arte Virtual</h2>
+				<h2 className="admin-title">Editar Cliente</h2>
 				<div className="admin-breadcrumb">
-					<a href="main.html">Admin</a>
+					<a href="/admin">Admin</a>
 					<p className="admin-breadcrumb-divider">/</p>
-					<a href="list.html">Arte Virtual</a>
+					<a href="/admin/cliente">Cliente</a>
 					<p className="admin-breadcrumb-divider">/</p>
 					<p>1</p>
 				</div>
 				<div className="admin-edit">
-					<div className="admin-image-container">
-						<img className="admin-image" src="../../img/art3.jpeg" alt="Objeto Rosa"/>
-						<div className="admin-image-button-container">
-							<button className="admin-image-button">Alterar</button>
-							<button className="admin-image-button">Excluir</button>
-						</div>
-					</div>
 					<div className="admin-edit-fields-container">
 						<form>
 							{values.id!==undefined &&

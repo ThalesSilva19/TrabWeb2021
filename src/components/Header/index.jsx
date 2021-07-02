@@ -4,7 +4,6 @@ import './style.css';
 
 export default function Header() {
     const { isLogged, isAdmin, user, signOut } = useContext(AuthContext)
-	console.log(isLogged)
 
     return (
         <div className="headerContainer">

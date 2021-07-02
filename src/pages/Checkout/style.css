@@ -31,17 +31,12 @@
     gap: 4px;
 }
 
-.checkoutBox .checkoutButton {
-    background-color: white;
-    color: red;
-    border: solid 1px red;
-    border-radius: 8px;
-    padding: 4px;
-    width: 150px;
-    height: 2.5rem;
-    cursor: pointer;
+.checkoutBox button {
+	width: 100px;
+	border: none;
+	cursor: pointer;
 }
 
-.checkoutBox .checkoutButton:hover {
-    background-color: #f0f0f0;
+.checkoutBox button:hover {
+	background-color: var(--main-color-light);
 }
