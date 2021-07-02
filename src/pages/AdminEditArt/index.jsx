@@ -40,11 +40,25 @@ export default function AdminEditArt(props) {
 	}, []);
 
 	const handleChange = (e, field) => {
-		setValues({
-			...values, 
-			[field]: e.target.value
-		});
+		if(field==="price") {
+			// Price should be converted to float (string is the default)
+			setValues({
+				...values, 
+				[field]: parseFloat(e.target.value)
+			});
+		}
+		else
+		{
+			setValues({
+				...values, 
+				[field]: e.target.value
+			});
+		}
 	};
+
+	const removeImage = () => {
+		setValues({...values, image:undefined})	;
+	}
 
 	const handleCancel = () => {
 		history.push("/admin/arte/");
@@ -116,10 +130,10 @@ export default function AdminEditArt(props) {
 				</div>
 				<div className="admin-edit">
 					<div className="admin-image-container">
-						<img className="admin-image" src="../../img/art3.jpeg" alt="Objeto Rosa"/>
+						<img className="admin-image" src={values.image} alt={values.name}/>
 						<div className="admin-image-button-container">
 							<button className="admin-image-button">Alterar</button>
-							<button className="admin-image-button">Excluir</button>
+							<button className="admin-image-button" onClick={removeImage}>Excluir</button>
 						</div>
 					</div>
 					<div className="admin-edit-fields-container">

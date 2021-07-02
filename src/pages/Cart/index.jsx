@@ -1,6 +1,7 @@
 import './style.css'
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { useHistory } from "react-router-dom";
+import { AuthContext } from "../../contexts/AuthContext";
 import Header from '../../components/Header';
 import Counter from '../../components/Counter';
 import { ArtLocalStorage } from '../../localStorage/artLocalStorage';
@@ -79,6 +80,7 @@ const CartItem = (props) => {
 }
 
 export default function Cart() {
+    const { isLogged, isAdmin, user, signOut } = useContext(AuthContext)
 	const [cart, setCart] = CartLocalStorage();
 	const [arts] = ArtLocalStorage();
 	const [cartSum, setCartSum] = useState(0);
@@ -91,14 +93,16 @@ export default function Cart() {
 	useEffect(()=>{
 		let auxSum = 0;
 		cart.forEach(i=>{
-			let artPrice = 0;
-			arts.forEach(a=>{
-				if(a.id == i.art_id)
-					artPrice = a.price;
-			})
-			auxSum+=i.quantity*artPrice;
+			if(user!=undefined && i.nickname === user.name)
+			{
+				let artPrice = 0;
+				arts.forEach(a=>{
+					if(a.id == i.art_id)
+						artPrice = a.price;
+				})
+				auxSum+=i.quantity*artPrice;
+			}
 		})
-		console.log("New sum" + auxSum);
 		setCartSum(auxSum);
 	}, [cart]);
 
@@ -108,15 +112,23 @@ export default function Cart() {
 			<h3 className="cart-title">SACOLA</h3>
 
 			<div className="cart-content">
-				{
-					cart.map(item => (<CartItem key={item.id} {...item} cart={cart} setCart={setCart}/>))
+				{ user!=undefined &&
+					cart.filter(item=>(item.nickname==user.name)).map(item => (<CartItem key={item.id} {...item} cart={cart} setCart={setCart}/>))
+				}
+				{ cartSum == 0 &&
+					<p className="cart-empty-text">Seu carrinho está vazio</p>
 				}
 				<div className="cart-content-footer">
 					<div className="cart-content-footer-text">
 						<span className="cart-total">Total</span>
 						<span className="cart-total">R$ {cartSum.toFixed(2)}</span>
 					</div>
-					<button className="button-main" onClick={goToCheckout}>Continuar</button>
+					{ cartSum != 0 &&
+						<button className="button-main" onClick={goToCheckout}>Continuar</button>
+					}
+					{ cartSum == 0 &&
+						<button className="button-main" disabled>Continuar</button>
+					}
 				</div>
 			</div>
 		</>

@@ -8,7 +8,7 @@ import { CustomerLocalStorage } from "../../localStorage/customerLocalStorage.js
 
 export default function Login(props) {
 
-    const { isLogged,signin} = useContext(AuthContext)
+    const { isLogged, signin} = useContext(AuthContext)
 	const history = useHistory();
 
 	console.log(signin)
@@ -17,6 +17,7 @@ export default function Login(props) {
 	function login(){
 		const email = document.querySelector('#email').value
 		const password = document.querySelector('#password').value
+		console.log(email + " " + password);
 		if(signin(email,password)){
 			history.push('/')
 		}
