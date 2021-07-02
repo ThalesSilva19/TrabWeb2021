@@ -40,10 +40,19 @@ export default function AdminEditCustomer(props) {
 	}, []);
 
 	const handleChange = (e, field) => {
-		setValues({
-			...values, 
-			[field]: e.target.value
-		});
+		if(field==="totalReceived") {
+			// Price should be converted to float (string is the default)
+			setValues({
+				...values, 
+				[field]: parseFloat(e.target.value)
+			});
+		}
+		else {
+			setValues({
+				...values, 
+				[field]: e.target.value
+			});
+		}
 	};
 
 	const handleCancel = () => {
@@ -113,7 +122,7 @@ export default function AdminEditCustomer(props) {
 					<p className="admin-breadcrumb-divider">/</p>
 					<a href="/admin/cliente">Cliente</a>
 					<p className="admin-breadcrumb-divider">/</p>
-					<p>1</p>
+					<p>{id}</p>
 				</div>
 				<div className="admin-edit">
 					<div className="admin-edit-fields-container">

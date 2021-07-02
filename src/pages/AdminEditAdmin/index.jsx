@@ -72,8 +72,6 @@ export default function AdminEditArt(props) {
 			// Create new admin item
 			let newAdmin = {...values};
 			newAdmin.id = maxId+1;
-			newAdmin.token = "12134abc";
-			newAdmin.creation = new Date().toISOString();
 			newAdmins.push(newAdmin);
 
 			// Update admin vector
@@ -107,7 +105,7 @@ export default function AdminEditArt(props) {
 					<p className="admin-breadcrumb-divider">/</p>
 					<a href="/admin/admin">Administradores</a>
 					<p className="admin-breadcrumb-divider">/</p>
-					<p>1</p>
+					<p>{id}</p>
 				</div>
 				<div className="admin-edit">
 					<div className="admin-edit-fields-container">

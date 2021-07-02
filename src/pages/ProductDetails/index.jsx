@@ -65,7 +65,7 @@ export default function ProductDetails(props) {
 						: <h2>Não está a venda</h2>
 					}
                     
-					{ inSale
+					{ inSale && user!=null
 						? <button className="productButton" onClick={addToCart}>Comprar</button>
 						: <button className="productButton" disabled>Comprar</button>
 					}

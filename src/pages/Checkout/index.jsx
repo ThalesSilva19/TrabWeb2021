@@ -7,12 +7,14 @@ import Header from '../../components/Header';
 import InputMask from 'react-input-mask';
 import { ArtLocalStorage } from '../../localStorage/artLocalStorage';
 import { CartLocalStorage } from '../../localStorage/cartLocalStorage';
+import { CustomerLocalStorage } from '../../localStorage/customerLocalStorage';
 
 export default function Checkout() {
 	const history = useHistory();
     const { isLogged, isAdmin, user, signOut } = useContext(AuthContext)
 	const [cart, setCart] = CartLocalStorage();
 	const [arts, setArts] = ArtLocalStorage();
+	const [customers, setCustomers] = CustomerLocalStorage();
 	const [cartSum, setCartSum] = useState(0);
 
 	useEffect(()=>{
@@ -80,11 +82,23 @@ export default function Checkout() {
 		let newArts = []
 		arts.forEach(a=>newArts.push({...a}));
 		cartItems.forEach(i=>{
-			newArts.forEach(a=>{
+			newArts.forEach(async a=>{
 				if(a.id == i.art_id)
 				{
 					a.quantity -= i.quantity;
 					a.quantitySold += i.quantity;
+					// Increase wallet client
+					let currentUsers = [];
+					let idx = 0;
+					for(let j=0;j<customers.length;j++)
+					{
+						if(customers[j].nickname == a.belong)
+							idx = j;
+						currentUsers.push({...customers[j]})
+					}
+					currentUsers[idx].totalReceived+=i.quantity*a.price;
+					await setCustomers(currentUsers);
+
 					// Create new arts beloging to the user
 					let currTime = new Date().toISOString();
 					newArts.push({...a, id:maxArtId+1, belong:user.name, quantity:i.quantity, quantitySold:0, creation: currTime})

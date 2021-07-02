@@ -126,7 +126,7 @@ export default function AdminEditArt(props) {
 					<p className="admin-breadcrumb-divider">/</p>
 					<a href="list.html">Arte Virtual</a>
 					<p className="admin-breadcrumb-divider">/</p>
-					<p>1</p>
+					<p>{id}</p>
 				</div>
 				<div className="admin-edit">
 					<div className="admin-image-container">

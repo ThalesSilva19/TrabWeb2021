@@ -5,14 +5,12 @@ import './style.css';
 
 export default function Card(props) {
     const { user } = useContext(AuthContext);
-	console.log(user,props.belong);
 	var my = user?.name != null && user.name === props.belong;
 	var inSale = props.price != 0;
 
 	var history = useHistory();
 
 	function handleClick() {
-		console.log(props.id);
 		history.push(`/products/${props.id}`);
 	}
 
