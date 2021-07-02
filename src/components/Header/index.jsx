@@ -31,7 +31,7 @@ export default function Header() {
                             isLogged ? (
                                 <>
                                     <li className="nav-item">
-                                        <a className="nav-link"  href={"/users/" + user.name}>
+                                        <a className="nav-link"  href={"/collection/" + user.name}>
                                             MINHAS ARTES
                                         </a>
                                     </li>
