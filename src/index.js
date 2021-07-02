@@ -26,7 +26,6 @@ ReactDOM.render(
             <Switch>
                 <AuthProvider>
                     <Route exact path='/' component={Home}/>
-                    <Route exact path='/products' component={Products}/>
                     <Route exact path='/products/:id' component={ProductDetails}/>
                     <Route exact path='/users/:user' component={User}/>
                     <Route exact path='/admin' component={Admin}/>

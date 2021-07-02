@@ -1,54 +1,29 @@
-.headerContainer {
-    background-color: var(--main-color);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 40px;
-    padding: 0 16px;
-    border-bottom: solid 2px var(--main-color-light);
-
-    /*Shadow box*/
-    -webkit-box-shadow: 0px 10px 13px -7px var(--main-color), 5px 5px 15px 5px rgba(0,0,0,0); 
-    box-shadow: 0px 10px 13px -7px var(--main-color), 5px 5px 15px 5px rgba(0,0,0,0);
+.navbar {
+	box-shadow: 0px 4px 4px 0px #00000040;
 }
 
-.headerContainer nav a {
-    color: white;
-    margin: 12px;
+.bg-light {
+	background-color: var(--main-color)!important;
 }
 
-.headerContainer nav a:hover {
-    border-bottom: solid 1px white;
+.nav-link {
+	color: white!important;
+	border-bottom: solid 1px var(--main-color);
+	transition: all linear 150ms;
 }
 
-.headerContainer form input {
-    padding: 4px;
-    border-radius: 10px;
-    outline: none;
-    border: none;
+.nav-link:hover {
+	border-bottom: solid 1px white;
 }
 
-.headerContainer form input:focus {
-    outline: none;
+.btn-outline-success {
+	color: white;
+	border-color: white;
+	transition: all linear 150ms;
 }
 
-.headerContainer form {
-    display: flex;
-    gap: 8px;
-}
-
-.headerContainer form button {
-    padding: 4px;
-    background-color: var(--main-color);
-    color: white;
-    border: none;
-    cursor: pointer;
-}
-
-.headerContainer form button:hover {
-    border-bottom: solid 1px white;
-}
-
-.headerContainer form button:focus {
-    outline: none;
+.btn-outline-success:hover {
+	border-color: white;
+	background-color: white;
+	color: var(--main-color);
 }
