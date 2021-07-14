@@ -1,5 +1,3 @@
-import { Model, Schema } from 'mongoose';
-
 var mongoose = require('../../database/db');
 
 const bcrypt = require('bcrypt');
