@@ -1,5 +1,5 @@
+const { ObjectId } = require('mongodb');
 var mongoose = require('../../database/db');
-
 const bcrypt = require('bcrypt');
 
 const UserSchema = new mongoose.Schema({
@@ -17,6 +17,53 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: true,
         select: false
+    },
+    username: {
+        type: String,
+        required: true,
+        unique: true,
+        uppercase: true
+    },
+    totalReceived: {
+        type: Number,
+        required: true,
+        default: 0
+    },
+    phone: {
+        type: String,
+        required: true,
+    },
+    arts: [{
+        type: ObjectId,  
+    }],
+    address: {
+        postalCode: {
+            type: String,
+            required: true,
+        },
+        street: {
+            type: String,
+            required: true,
+            uppercase: true,
+        },
+        complement: {
+            type: String,
+            uppercase: true,
+        },
+        district: {
+            type: String,
+            required: true,
+            uppercase: true,
+        },
+        city: {
+            type: String,
+            required: true,
+            uppercase: true,
+        }
+    },
+    isAdmin: {
+        type: Boolean,
+        default: false
     }
 }, { timestamps: true });
 
