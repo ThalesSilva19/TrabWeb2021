@@ -14,11 +14,11 @@ export default function Login(props) {
 	console.log(signin)
 
 
-	function login(){
+	async function login(){
 		const email = document.querySelector('#email').value
 		const password = document.querySelector('#password').value
 		console.log(email + " " + password);
-		if(signin(email,password)){
+		if(await signin(email,password)){
 			history.push('/')
 		}
 		else{

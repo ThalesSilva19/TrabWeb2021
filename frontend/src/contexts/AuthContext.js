@@ -20,10 +20,29 @@ export function AuthProvider( {children} ) {
     }, [user]);
 
 	
-	function signUp(name,address,phone,email,password,nickname){
-		if(addRegister(name,address,phone,email,password,nickname)){
+	async function signUp(name,address,phone,email,password,username){
+		
+		var response = await fetch('http://localhost:3001/auth/register',{
+			method:'PUT',
+			headers: new Headers({"Content-Type": "application/json"}),
+			body: JSON.stringify({
+				name,
+				address,
+				phone,
+				username,
+				email,
+				password			
+			})
+		}).catch((e)=>{
+			console.log(e)
+			return {ok: false}
+		})
+		
+		console.log(response)
+	
+		if(response.ok){
 			var auxUser ={
-				name: nickname,
+				name: username,
 				email: email,
 				isAdmin: false
 			}
@@ -35,20 +54,22 @@ export function AuthProvider( {children} ) {
 		}
 	}
 
-   	function signIn(email, password) {
-       	let emailUser = users.filter(a => ( a.email == email ));
+   	async function signIn(email, password) {
 
-		if(emailUser.length != 1){ 
-			return false;
-		}
-		if(emailUser[0].password == password){
-			var auxUser ={
-				name: emailUser[0].nickname,
-				email: emailUser[0].email,
-				isAdmin: admins.filter(a => {return a.email == emailUser[0].email}).length > 0
-			}
-			console.log(auxUser);
-			setUser(auxUser);
+		var response = await fetch('http://localhost:3001/auth/login',{
+			method:'POST',
+			headers: {'Content-type':'application/json'},
+			body: JSON.stringify({email,password})
+		}).catch((e) => {
+			console.log(e)
+			return {ok: false}
+		})
+
+		console.log(response)
+		
+		if(response.ok){
+			var user  = await response.json();
+			setUser(user);
 			return true;
 		}
 		else{

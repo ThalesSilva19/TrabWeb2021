@@ -19,7 +19,7 @@ export default function Register(props) {
 		const adress = document.querySelector('#adress').value
 		const phone = document.querySelector('#phone').value
 		const password = document.querySelector('#password').value
-		if(signup(name,adress,phone,email,password,nickname)){
+		if(await signup(name,adress,phone,email,password,nickname)){
 			history.push('/')
 		}
 		else{

@@ -24,6 +24,11 @@ const UserSchema = new mongoose.Schema({
         unique: true,
         uppercase: true
     },
+    credit: {
+        type: Number,
+        required: true,
+        default: 10000
+    },
     totalReceived: {
         type: Number,
         required: true,
@@ -37,6 +42,9 @@ const UserSchema = new mongoose.Schema({
         type: ObjectId,  
     }],
     address: {
+		type: String,
+		required: true,
+/*
         postalCode: {
             type: String,
             required: true,
@@ -60,6 +68,7 @@ const UserSchema = new mongoose.Schema({
             required: true,
             uppercase: true,
         }
+*/
     },
     isAdmin: {
         type: Boolean,

@@ -7,6 +7,8 @@ app.use(express.urlencoded({ extended:true }));
 app.use(cors());
 
 require('./app/controllers/MainController.js')(app);
+require('./app/controllers/AuthController.js')(app);
+require('./app/controllers/PublicController.js')(app);
 
 require('dotenv').config({
     path: process.env.NODE_ENV === 'test' ? '.env.test' : '.env'

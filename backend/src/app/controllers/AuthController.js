@@ -11,14 +11,18 @@ function generateJWT(params) {
     });
 }
 
+
+
 router.put('/register', async (req, res) => {
     const { name, email, password, username, totalReceived, phone, address } = req.body;
 
     console.log(address);
 
-    if (!name || !email || !password || !username || !phone || !address.postalCode || !address.street || !address.district || !address.city) {
+    if (!name || !email || !password || !username || !phone || !address){//!address.postalCode || !address.street || !address.district || !address.city) {
         return res.status(400).send({ message: 'missing params' });
     }
+
+    console.log(address);
 
     if (
         typeof name !== 'string' || 
@@ -26,17 +30,20 @@ router.put('/register', async (req, res) => {
         typeof password !== 'string' ||
         typeof username !== 'string' ||
         typeof phone !== 'string' ||
-        typeof address.postalCode !== 'string' ||
+        typeof address !== 'string' 
+        /*typeof address.postalCode !== 'string' ||
         typeof address.street !== 'string' ||
         typeof address.district !== 'string' ||
-        typeof address.city !== 'string'
+        typeof address.city !== 'string'*/
     ) {
         return res.status(400).send({ message: 'invalid params 1' });
     }
 
-    if ((address.complement && typeof address.complement !== 'string') || (totalReceived && typeof totalReceived !== 'number')) {
+    console.log(address);
+
+    /*if ((address.complement && typeof address.complement !== 'string') || (totalReceived && typeof totalReceived !== 'number')) {
         return res.status(400).send({ message: 'invalid params 2' });
-    }
+    }*/
 
     try {
         if (await User.findOne({ email })) {
@@ -48,7 +55,7 @@ router.put('/register', async (req, res) => {
             email,
             password,
             username,
-            totalReceived,
+            totalReceived: 0,
             phone,
             address 
         });
@@ -80,7 +87,12 @@ router.post('/login', async (req, res) => {
 
         else {
             const jwt = generateJWT({ id: user.id });
-            return res.status(200).set('Authorization', `Bearer ${jwt}`).send({ message: 'authenticated' });
+			var auxUser = {
+				name: user.username,
+				email: user.email,
+				isAdmin: user.isAdmin
+			}
+            return res.status(200).set('Authorization', `Bearer ${jwt}`).send(auxUser);
         }
     } catch (err) {
         return res.status(400).send({ message: 'error: ' + err });
