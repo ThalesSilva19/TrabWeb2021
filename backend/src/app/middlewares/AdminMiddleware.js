@@ -19,3 +19,6 @@ async function authenticate(req, res, next){
 		return res.status(401).send('unauthorized');
 	}
 }
+
+
+module.exports = authenticate;

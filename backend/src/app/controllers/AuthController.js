@@ -5,6 +5,7 @@ const bcrypt = require('bcrypt');
 
 const User = require('../models/userModel');
 
+
 function generateJWT(params) {
     return jwt.sign(params, process.env.SECRET, {
         expiresIn: 86400,
@@ -62,7 +63,13 @@ router.put('/register', async (req, res) => {
 
         const jwt = generateJWT({ id: user._id });
 
-        return res.status(200).set('Authorization', `Bearer ${jwt}`).send({ message: 'account successfully created' });
+		var auxUser = {
+			name: user.username,
+			email: user.email,
+			isAdmin: user.isAdmin,
+			token: 'Bearer ' + jwt
+		}
+		return res.status(200).send(auxUser);
 
     } catch (err) {
         return res.status(400).send({ message: `error: ${err}` });
@@ -86,13 +93,16 @@ router.post('/login', async (req, res) => {
             return res.status(400).send({ message: 'invalid password' });
 
         else {
-            const jwt = generateJWT({ id: user.id });
+            const jwt = generateJWT({ id: user._id });
+
 			var auxUser = {
 				name: user.username,
 				email: user.email,
-				isAdmin: user.isAdmin
+				isAdmin: user.isAdmin,
+				token: 'Bearer ' + jwt
 			}
-            return res.status(200).set('Authorization', `Bearer ${jwt}`).send(auxUser);
+			return res.status(200).send(auxUser);
+
         }
     } catch (err) {
         return res.status(400).send({ message: 'error: ' + err });

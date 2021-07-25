@@ -4,6 +4,7 @@ import Header from '../../components/Header';
 import { useHistory } from "react-router-dom";
 import { useContext,useState,useEffect } from 'react';
 import { AuthContext } from "../../contexts/AuthContext";
+import { getProductsByOwner, getTotal } from '../../services/api.js';
 
 export default function Collection(props) {
     const owner  = props.match.params.user;
@@ -15,26 +16,8 @@ export default function Collection(props) {
 	var isYou = user.name === owner
 
 	useEffect(async () => {
-		var response = fetch('http://localhost:3001/products?owner='+owner).then(async () => {
-			if(response.ok){
-				var body = await response.json();
-				setArts(body.products);
-			}
-		}).catch(e =>{
-			console.log(e);
-			return {ok: false};
-		})
-		if(isYou){
-			var response = fetch('http://localhost:3001/user/total').then(async() => {
-				if(response.ok){
-					var body = await response.json();
-					setTotal(body.total);
-				}
-			}).catch(e =>{
-				console.log(e);
-				return {ok: false};
-			})
-		}
+		setArts(await getProductsByOwner(owner));
+		setTotal(await getTotal(user.token));
 	},[]);
 
 	function toNewArt(){

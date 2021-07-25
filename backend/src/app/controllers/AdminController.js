@@ -4,6 +4,6 @@ const router = express.Router();
 
 const adminMiddleware = require("../middlewares/AdminMiddleware");
 
-router.user(adminMiddlware);
+router.use(adminMiddleware);
 
 module.exports = (app) => app.use('/admin', router);

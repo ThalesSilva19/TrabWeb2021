@@ -4,6 +4,7 @@ import Header from '../../components/Header';
 import { useHistory } from "react-router-dom";
 import { useContext, useState, useEffect } from 'react';
 import { AuthContext } from "../../contexts/AuthContext";
+import { getProductsByArtist, getTotal } from '../../services/api.js';
 
 export default function Artist(props) {
     const artist  = props.match.params.user;
@@ -14,28 +15,9 @@ export default function Artist(props) {
 
 	var isYou = user.name === artist
 
-
 	useEffect(async () => {
-		var response = fetch('http://localhost:3001/products?artist='+artist).then(async () => {
-			if(response.ok){
-				var body = await response.json();
-				setArts(body.products);
-			}
-		}).catch(e =>{
-			console.log(e);
-			return {ok: false};
-		})
-		if(isYou){
-			var response = fetch('http://localhost:3001/user/total').then(async() => {
-				if(response.ok){
-					var body = await response.json();
-					setTotal(body.total);
-				}
-			}).catch(e =>{
-				console.log(e);
-				return {ok: false};
-			})
-		}
+		setArts(await getProductsByArtist(artist));
+		setTotal(await getTotal(user.token));
 	},[]);
 
 	function toNewArt(){

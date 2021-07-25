@@ -1,6 +1,7 @@
 const express = require("express");
 
-const authMiddleware = require("../middlwares/AuthMiddleware");
+const authMiddleware = require("../middlewares/AuthMiddleware");
+const User = require('../models/userModel');
 
 const router = express.Router();
 
@@ -91,5 +92,14 @@ router.post('/buy', async (req, res) => {
 		}
 	}
 })
+
+router.get('/total', async (req, res) => {
+	var data = await User.findById(req.body.id).select('totalReceived').exec()
+	var total = data.totalReceived
+	console.log(req.body.id)
+	console.log(total)
+    res.status(200).send({total});
+})
+
 
 module.exports = (app) => app.use('/user', router);
