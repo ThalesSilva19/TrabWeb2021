@@ -21,8 +21,7 @@ const UserSchema = new mongoose.Schema({
     username: {
         type: String,
         required: true,
-        unique: true,
-        uppercase: true
+        unique: true
     },
     credit: {
         type: Number,

@@ -94,3 +94,128 @@ export  async function login(email,password){
 	})
 }
 
+/// ADMIN ENDPOINTS
+
+// Get list
+const adminGetList = (token, endpoint, data) => {
+	let config = {
+	  headers: {
+		auth: token
+	  }
+	};
+	return api.get(endpoint, config).then(response => {
+		if(response.status == 200){
+			return response.data[data];
+		}
+		return [];
+	}).
+	catch(error => {
+		return [];
+	})
+}
+
+export async function getProductsAdmin(token){
+	return adminGetList(token, '/admin/products', 'products');
+}
+
+export async function getCustomersAdmin(token){
+	return adminGetList(token, '/admin/users', 'users');
+}
+
+export async function getAdminsAdmin(token){
+	return adminGetList(token, '/admin/admins', 'admins');
+}
+
+// Get one
+const adminGetOne = (token, endpoint) => {
+	let config = {
+	  headers: {
+		auth: token
+	  }
+	};
+	return api.get(endpoint, config).then(response => {
+		if(response.status == 200){
+			return response.data;
+		}
+		return undefined;
+	}).
+	catch(error => {
+		return undefined;
+	})
+}
+
+export async function getProductAdmin(token, id){
+	return adminGetOne(token, `/admin/products/${id}`);
+}
+
+export async function getCustomerAdmin(token, id){
+	return adminGetOne(token, `/admin/users/${id}`);
+}
+
+export async function getAdminAdmin(token, id){
+	return adminGetOne(token, `/admin/users/${id}`);
+}
+
+// Create
+const adminCreate = (token, endpoint, data) => {
+	let config = {
+	  headers: {
+		auth: token,
+	  }
+	};
+
+	return api.put(endpoint, data, config).then(response => {
+		console.log(response);
+		if(response.status == 200){
+			return response.data;
+		}
+		return undefined;
+	}).
+	catch(error => {
+		return undefined;
+	})
+}
+
+export async function createProductAdmin(token, data){
+	return adminCreate(token, '/admin/products', data);
+}
+
+export async function createCustomerAdmin(token, data){
+	return adminCreate(token, '/admin/users', data);
+}
+
+export async function createAdminAdmin(token, data){
+	return adminCreate(token, '/admin/users', data);
+}
+
+// Update
+const adminUpdate = (token, endpoint, data) => {
+	let config = {
+	  headers: {
+		auth: token,
+	  }
+	};
+
+	return api.post(endpoint, data, config).then(response => {
+		console.log(response);
+		if(response.status == 200){
+			return response.data;
+		}
+		return undefined;
+	}).
+	catch(error => {
+		return undefined;
+	})
+}
+
+export async function updateProductAdmin(token, id, data){
+	return adminUpdate(token, `/admin/products/${id}`, data);
+}
+
+export async function updateCustomerAdmin(token, id, data){
+	return adminUpdate(token, `/admin/users/${id}`, data);
+}
+
+export async function updateAdminAdmin(token, id,data){
+	return adminUpdate(token, `/admin/admins/${id}`, data);
+}

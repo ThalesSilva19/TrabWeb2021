@@ -2,11 +2,10 @@ import { useEffect, useState } from 'react';
 import { useHistory } from "react-router-dom";
 import '../../styles/admin.css'
 import Header from '../../components/Header';
-import { CustomerLocalStorage } from '../../localStorage/customerLocalStorage';
+import { getCustomerAdmin, createCustomerAdmin, updateCustomerAdmin } from '../../services/api.js';
 
 export default function AdminEditCustomer(props) {
 	const history = useHistory();
-	const [customers, setCustomers] = CustomerLocalStorage();
 	const [values, setValues] = useState({
 		id: undefined,
 		name: "",
@@ -19,23 +18,14 @@ export default function AdminEditCustomer(props) {
 	})
 	const id = props.match.params.id;// "adicionar" or integer number
 
-	useEffect(() => {
-		if(id === "adicionar")
+	useEffect(async () => {
+		if(id !== "adicionar")
 		{
-
-		}
-		else
-		{
-			let found = false;
-			customers.forEach(customer => {
-				if(customer.id==id)
-				{
-					found = true;
-					setValues({...customer})
-				}
-			});
-			if(!found)
+			let customer = await getCustomerAdmin("TOKEN", id);
+			if(customer === undefined)
 				history.push("/admin/cliente")
+			else
+				setValues({...customer})
 		}
 	}, []);
 
@@ -60,55 +50,28 @@ export default function AdminEditCustomer(props) {
 	};
 
 	const handleDelete = async () => {
-		// Create new customer vector without deleted customer
-		let newCustomers = [];
-		customers.filter(customer=>customer.id!=id).forEach(customer=>newCustomers.push({...customer}));
+		//// Create new customer vector without deleted customer
+		//let newCustomers = [];
+		//customers.filter(customer=>customer.id!=id).forEach(customer=>newCustomers.push({...customer}));
 
-		// Update customer vector
-		await setCustomers(newCustomers);
-		history.push("/admin/cliente/");
+		//// Update customer vector
+		//await setCustomers(newCustomers);
+		//history.push("/admin/cliente/");
 	};
 
 	const handleSave = async () => {
 		// Create new customer or update existing one
 		if(id==="adicionar")		
 		{
-			// Get next id
-			let maxId = 0;
-			customers.forEach(customer=>{
-				if(customer.id>maxId)
-					maxId = customer.id;
-			})
-
-			// Create new customer vector
-			let newCustomers = [];
-			customers.forEach(customer=>newCustomers.push({...customer}))
-
-			// Create new customer item
-			let newCustomer = {...values};
-			newCustomer.id = maxId+1;
-			newCustomer.token = "12134abc";
-			newCustomer.creation = new Date().toISOString();
-			newCustomers.push(newCustomer);
-
-			// Update customer vector
-			await setCustomers(newCustomers);
-			history.push("/admin/cliente/");
+			// Create new customer
+			let res = await createCustomerAdmin("TOKEN", values);
+			history.push("/admin/cliente")
 		}
 		else
 		{
 			// Update customer
-			for(let i=0;i<customers.length;i++)
-			{
-				if(customers[i].id==id)
-				{
-					let newCustomers = [];
-					customers.forEach(customer=>newCustomers.push({...customer}))
-					newCustomers[i] = {...customers[i], ...values};
-					await setCustomers(newCustomers);
-					history.push("/admin/cliente/");
-				}
-			}
+			let res = await updateCustomerAdmin("TOKEN", id, values);
+			history.push("/admin/cliente");
 		}
 	};
 
@@ -120,7 +83,7 @@ export default function AdminEditCustomer(props) {
 				<div className="admin-breadcrumb">
 					<a href="/admin">Admin</a>
 					<p className="admin-breadcrumb-divider">/</p>
-					<a href="/admin/cliente">Cliente</a>
+					<a href="/admin/cliente">Clientes</a>
 					<p className="admin-breadcrumb-divider">/</p>
 					<p>{id}</p>
 				</div>

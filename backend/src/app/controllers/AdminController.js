@@ -14,14 +14,22 @@ router.use(adminMiddleware);
 //--------- PRODUCT ----------//
 //----------------------------//
 router.get('/products', async (req, res) => {
-	var query = Product.find({})
+	var query = Product.find({}).populate('belong', 'username').populate('creator', 'username');
 	products = await query.exec()
     res.status(200).send({products});
 });
 
+router.get('/products/:id', async (req, res) => {
+	try{
+		const product = await Product.findById(req.params.id);
+		return res.status(200).send(product);
+    } catch (err) {
+        return res.status(400).send({ message: `error: ${err}` });
+    }
+});
+
 router.put('/products', async (req, res) => {
     const { name, description, image, belong, creator, quantity, quantitySold, price } = req.body;
-	console.log(req.body);
 
     if (name===undefined || image===undefined || belong===undefined || creator===undefined || quantity===undefined || quantitySold===undefined || price===undefined){
         return res.status(400).send({ message: 'missing params' });
@@ -60,7 +68,6 @@ router.put('/products', async (req, res) => {
 
 router.post('/products/:id', async (req, res) => {
     const { name, description, image, belong, creator, quantity, quantitySold, price } = req.body;
-	console.log(req.body);
 
     if (name===undefined || image===undefined || belong===undefined || creator===undefined || quantity===undefined || quantitySold===undefined || price===undefined){
         return res.status(400).send({ message: 'missing params' });
@@ -101,6 +108,16 @@ router.post('/products/:id', async (req, res) => {
 //----------------------------//
 //----------- USERS ----------//
 //----------------------------//
+
+//---------- Get one ----------//
+router.get('/users/:id', async (req, res) => {
+	try{
+		const user = await User.findById(req.params.id);
+		return res.status(200).send(user);
+    } catch (err) {
+        return res.status(400).send({ message: `error: ${err}` });
+    }
+});
 
 //---------- Get list ----------//
 router.get('/users', async (req, res) => {

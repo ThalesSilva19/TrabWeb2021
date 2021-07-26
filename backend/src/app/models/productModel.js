@@ -14,11 +14,13 @@ const ProductSchema = new mongoose.Schema({
         required: true,
     },
     belong: {
-        type: ObjectId,
+		type: mongoose.Schema.Types.ObjectId,
+		ref: 'User',
         required: true,
     },
     creator: {
-        type: ObjectId,
+		type: mongoose.Schema.Types.ObjectId,
+		ref: 'User',
         required: true,
     },
     quantity: {

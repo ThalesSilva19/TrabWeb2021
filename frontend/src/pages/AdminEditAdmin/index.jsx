@@ -2,34 +2,25 @@ import { useEffect, useState } from 'react';
 import { useHistory } from "react-router-dom";
 import '../../styles/admin.css'
 import Header from '../../components/Header';
-import { AdminLocalStorage } from '../../localStorage/adminLocalStorage';
+import { getAdminAdmin, createAdminAdmin, updateAdminAdmin } from '../../services/api.js';
 
 export default function AdminEditArt(props) {
 	const history = useHistory();
-	const [admins, setAdmins] = AdminLocalStorage();
+	const [admin, setAdmin] = useState([]);
 	const [values, setValues] = useState({
 		id: undefined,
 		email: "",
 	})
 	const id = props.match.params.id;// "adicionar" or integer number
 
-	useEffect(() => {
-		if(id === "adicionar")
+	useEffect(async () => {
+		if(id !== "adicionar")
 		{
-
-		}
-		else
-		{
-			let found = false;
-			admins.forEach(admin => {
-				if(admin.id==id)
-				{
-					found = true;
-					setValues({...admin})
-				}
-			});
-			if(!found)
+			let admin = await getAdminAdmin("TOKEN", id);
+			if(admin === undefined)
 				history.push("/admin/admin")
+			else
+				setValues({...admin})
 		}
 	}, []);
 
@@ -46,11 +37,11 @@ export default function AdminEditArt(props) {
 
 	const handleDelete = async () => {
 		// Create new admin vector without deleted admin
-		let newAdmins = [];
-		admins.filter(admin=>admin.id!=id).forEach(admin=>newAdmins.push({...admin}));
+		//let newAdmins = [];
+		//admins.filter(admin=>admin.id!=id).forEach(admin=>newAdmins.push({...admin}));
 
-		// Update admin vector
-		await setAdmins(newAdmins);
+		//// Update admin vector
+		//await setAdmins(newAdmins);
 		history.push("/admin/admin/");
 	};
 
@@ -58,40 +49,15 @@ export default function AdminEditArt(props) {
 		// Create new admin or update existing one
 		if(id==="adicionar")		
 		{
-			// Get next id
-			let maxId = 0;
-			admins.forEach(admin=>{
-				if(admin.id>maxId)
-					maxId = admin.id;
-			})
-
-			// Create new admin vector
-			let newAdmins = [];
-			admins.forEach(admin=>newAdmins.push({...admin}))
-
-			// Create new admin item
-			let newAdmin = {...values};
-			newAdmin.id = maxId+1;
-			newAdmins.push(newAdmin);
-
-			// Update admin vector
-			await setAdmins(newAdmins);
-			history.push("/admin/admin/");
+			// Create new admin
+			let res = await createAdminAdmin("TOKEN", values);
+			history.push("/admin/admin")
 		}
 		else
 		{
 			// Update admin
-			for(let i=0;i<admins.length;i++)
-			{
-				if(admins[i].id==id)
-				{
-					let newAdmins = [];
-					admins.forEach(admin=>newAdmins.push({...admin}))
-					newAdmins[i] = {...admins[i], ...values};
-					await setAdmins(newAdmins);
-					history.push("/admin/admin/");
-				}
-			}
+			let res = await updateAdminAdmin("TOKEN", id, values);
+			history.push("/admin/admin");
 		}
 	};
 

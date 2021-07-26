@@ -2,16 +2,16 @@ import { useEffect, useState } from 'react';
 import { useHistory } from "react-router-dom";
 import '../../styles/admin.css'
 import Header from '../../components/Header';
-import { ArtLocalStorage } from '../../localStorage/artLocalStorage';
+import { getProductAdmin, createProductAdmin, updateProductAdmin } from '../../services/api.js';
 
 export default function AdminEditArt(props) {
 	const history = useHistory();
-	const [arts, setArts] = ArtLocalStorage();
 	const [values, setValues] = useState({
-		id: undefined,
 		name: "",
 		belong: "",
 		creator: "",
+		description: "",
+		image: "https://atlas-content-cdn.pixelsquid.com/stock-images/pink-cup-coffee-2M0V096-600.jpg",
 		price: 0,
 		quantity: 1,
 		quantitySold: 1,
@@ -19,23 +19,14 @@ export default function AdminEditArt(props) {
 	})
 	const id = props.match.params.id;// "adicionar" or integer number
 
-	useEffect(() => {
-		if(id === "adicionar")
+	useEffect(async () => {
+		if(id !== "adicionar")
 		{
-
-		}
-		else
-		{
-			let found = false;
-			arts.forEach(art => {
-				if(art.id==id)
-				{
-					found = true;
-					setValues({...art})
-				}
-			});
-			if(!found)
+			let art = await getProductAdmin("TOKEN", id);
+			if(art === undefined)
 				history.push("/admin/arte")
+			else
+				setValues({...art})
 		}
 	}, []);
 
@@ -65,54 +56,28 @@ export default function AdminEditArt(props) {
 	};
 
 	const handleDelete = async () => {
-		// Create new art vector without deleted art
-		let newArts = [];
-		arts.filter(art=>art.id!=id).forEach(art=>newArts.push({...art}));
+		//// Create new art vector without deleted art
+		//let newArts = [];
+		//arts.filter(art=>art.id!=id).forEach(art=>newArts.push({...art}));
 
-		// Update art vector
-		await setArts(newArts);
-		history.push("/admin/arte/");
+		//// Update art vector
+		//await setArts(newArts);
+		//history.push("/admin/arte/");
 	};
 
 	const handleSave = async () => {
 		// Create new art or update existing one
 		if(id==="adicionar")		
 		{
-			// Get next id
-			let maxId = 0;
-			arts.forEach(art=>{
-				if(art.id>maxId)
-					maxId = art.id;
-			})
-
-			// Create new arts vector
-			let newArts = [];
-			arts.forEach(art=>newArts.push({...art}))
-
-			// Create new art item
-			let newArt = {...values};
-			newArt.id = maxId+1;
-			newArt.creation = new Date().toISOString();
-			newArts.push(newArt);
-
-			// Update art vector
-			await setArts(newArts);
-			history.push("/admin/arte/");
+			// Create new art
+			let res = await createProductAdmin("TOKEN", values);
+			history.push("/admin/arte")
 		}
 		else
 		{
 			// Update art
-			for(let i=0;i<arts.length;i++)
-			{
-				if(arts[i].id==id)
-				{
-					let newArts = [];
-					arts.forEach(art=>newArts.push({...art}))
-					newArts[i] = {...arts[i], ...values};
-					await setArts(newArts);
-					history.push("/admin/arte/");
-				}
-			}
+			let res = await updateProductAdmin("TOKEN", id, values);
+			history.push("/admin/arte");
 		}
 	};
 

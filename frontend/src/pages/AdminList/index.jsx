@@ -1,13 +1,24 @@
+import { useEffect, useState  } from "react";
 import { useHistory } from "react-router-dom";
 import './style.css'
 import '../../styles/admin.css'
 import Header from '../../components/Header';
-import { ArtLocalStorage } from '../../localStorage/artLocalStorage';
-import { CustomerLocalStorage } from '../../localStorage/customerLocalStorage';
-import { AdminLocalStorage } from '../../localStorage/adminLocalStorage';
+import { getProductsAdmin, getAdminsAdmin, getCustomersAdmin  } from '../../services/api.js';
 
 export default function AdminList(props) {
 	const history = useHistory();
+	const [arts, setArts] = useState([]);
+	const [customers, setCustomers] = useState([]);
+	const [admins, setAdmins] = useState([]);
+
+	useEffect(async () => {
+		if(type === "arte")
+			setArts(await getProductsAdmin("TODO"));
+		if(type === "cliente")
+			setCustomers(await getCustomersAdmin("TODO"));
+		if(type === "admin")
+			setAdmins(await getAdminsAdmin("TODO"));
+	},[]);
 
 	const type = props.match.params.type;
 	let title = "";
@@ -18,27 +29,24 @@ export default function AdminList(props) {
 	{
 		title = "Clientes";
 		columns  = ["Id", "Nome", "Telefone", "Email"];
-		const [customers] = CustomerLocalStorage();
 		customers.forEach(customer => {
-			rows.push([customer.id, customer.name, customer.phone, customer.email]);
+			rows.push([customer._id, customer.name, customer.phone, customer.email]);
 		});
 	}
 	else if(type === "admin")
 	{
 		title = "Administradores";
 		columns  = ["Id", "Email"];
-		const [admins] = AdminLocalStorage();
 		admins.forEach(admin => {
-			rows.push([admin.id, admin.email]);
+			rows.push([admin._id, admin.email]);
 		});
 	}
 	else if(type === "arte")
 	{
 		title = "Arte Virtual";
 		columns  = ["Id","Nome", "Proprietário", "Criador", "Preço", "Quantidade"];
-		const [arts] = ArtLocalStorage();
 		arts.forEach(art => {
-			rows.push([art.id, art.name, art.belong, art.creator, art.price, art.quantity]);
+			rows.push([art._id, art.name, art.belong.username, art.creator.username, art.price, art.quantity]);
 		});
 	}
 	else
