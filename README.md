@@ -48,7 +48,7 @@ Abaixo apresentamos o diagrama de navegação do site. Nas páginas inicial, bus
 </center>
 
 Seguindo o diagrama de navegação, temos as seguintes páginas:\
-Clique em _M_ para ir à image do mockup. (criados utilizando [Figma](https://www.figma.com))\
+Clique em _M_ para ir à image do mockup. (criados utilizando [Figma](https://www.figma.com))
 
 **Páginas:**
 - Página Principal ([M](./mockup/paginaPrincipal.png))
@@ -146,12 +146,25 @@ Todos os testes descritos funcionaram como esperado nos computadores que foram t
 
 ## 6. Procedimentos para executar
 Primeiramente é necessário instalar o NodeJS na máquina caso não possua (https://nodejs.org/en/download/).\
-Após isto:
+Para baixar:
 ```
 git clone git@github.com:ThalesSilva19/TrabWeb2021.git
 cd TrabWeb2021
+```
+
+Após isto, para executar o frontend:
+```
+cd TrabWeb2021/frontend
 npm install
 npm start
+```
+
+Para executar o backend:\
+(Obs: entrar em contato para pedir o arquivo `.env`)
+```
+cd TrabWeb2021/backend
+npm install
+npm run dev
 ```
 
 ## 7. Problemas

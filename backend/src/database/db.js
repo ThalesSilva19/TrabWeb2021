@@ -8,8 +8,10 @@ require('dotenv').config({
 (async () => {
     try {
         await mongoose.connect(process.env.DATABASE_URL, {
-            useNewUrlParser: true,
-            useUnifiedTopology: true
+			useNewUrlParser: true, 
+			useUnifiedTopology: true,
+			useCreateIndex: true,
+			useFindAndModify: false
         });
         console.log('Successfully connected');
     } catch (err) {

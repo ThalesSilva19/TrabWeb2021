@@ -44,31 +44,6 @@ const UserSchema = new mongoose.Schema({
     address: {
 		type: String,
 		required: true,
-/*
-        postalCode: {
-            type: String,
-            required: true,
-        },
-        street: {
-            type: String,
-            required: true,
-            uppercase: true,
-        },
-        complement: {
-            type: String,
-            uppercase: true,
-        },
-        district: {
-            type: String,
-            required: true,
-            uppercase: true,
-        },
-        city: {
-            type: String,
-            required: true,
-            uppercase: true,
-        }
-*/
     },
     isAdmin: {
         type: Boolean,
