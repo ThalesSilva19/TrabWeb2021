@@ -7,9 +7,7 @@ async function authenticate(req, res, next){
 	try {
 		var auth = req.headers.auth 
 		var token = auth.split(' ')[1]
-		console.log(token)
 		var decoded = jwt.verify(token,process.env.SECRET)
-		console.log(decoded)
 		req.body.id = decoded.id
 		next()
 	}

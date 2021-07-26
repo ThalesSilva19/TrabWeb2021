@@ -10,6 +10,10 @@ const User = require('../models/userModel');
 
 router.use(adminMiddleware);
 
+router.get('', async (req, res) => {
+    res.status(200).send({message: 'ok'});
+})
+
 //----------------------------//
 //--------- PRODUCT ----------//
 //----------------------------//

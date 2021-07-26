@@ -96,8 +96,6 @@ router.post('/buy', async (req, res) => {
 router.get('/total', async (req, res) => {
 	var data = await User.findById(req.body.id).select('totalReceived').exec()
 	var total = data.totalReceived
-	console.log(req.body.id)
-	console.log(total)
     res.status(200).send({total});
 })
 

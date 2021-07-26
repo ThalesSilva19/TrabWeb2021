@@ -18,8 +18,8 @@ export default function Card(props) {
         <div className="cardContainer">
             <img src={props.image} alt={props.name}/>
             <h3 className="cardTitle">{props.name}</h3>
-            <p>Pertence a <a href={'/collection/'+props.belong}>@{props.belong}</a></p>
-            <p>Feito por <a href={'/artist/'+props.creator}>@{props.creator}</a></p>
+            <p>Pertence a <a href={'/collection/'+props.belong_id}>@{props.belong}</a></p>
+            <p>Feito por <a href={'/artist/'+props.creator_id}>@{props.creator}</a></p>
 			<div className="cardPriceContainer">
 			{ inSale
             	? <h2>R${props.price.toFixed(2)}</h2>
