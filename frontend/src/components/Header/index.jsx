@@ -4,6 +4,7 @@ import './style.css';
 
 export default function Header() {
     const { isLogged, isAdmin, user, signOut } = useContext(AuthContext)
+	console.log(user)
 
     return (
         <div className="headerContainer">
@@ -31,7 +32,7 @@ export default function Header() {
                             isLogged ? (
                                 <>
                                     <li className="nav-item">
-                                        <a className="nav-link"  href={"/collection/" + user.name}>
+                                        <a className="nav-link"  href={"/collection/" + user.id}>
                                             MINHAS ARTES
                                         </a>
                                     </li>

@@ -24,8 +24,8 @@ export  async function getProducts(){
 }
 
 
-export  async function getProductsByArtist(artist){
-	return api.get('/products?artist='+artist).then(response => {
+export  async function getProductsByArtist(creator){
+	return api.get('/products',{params:{creator:creator}}).then(response => {
 		if(response.status == 200){
 			return response.data.products
 		}
@@ -37,7 +37,7 @@ export  async function getProductsByArtist(artist){
 }
 
 export  async function getProductsByOwner(owner){
-	return api.get('/products?owner='+owner).then(response => {
+	return api.get('/products',{params:{owner:owner}}).then(response => {
 		if(response.status == 200){
 			return response.data.products
 		}
@@ -45,6 +45,18 @@ export  async function getProductsByOwner(owner){
 	}).
 	catch(error => {
 		return []
+	})
+}
+
+export  async function getName(id){
+	return api.get('/name/'+id).then(response => {
+		if(response.status == 200){
+			return response.data.name
+		}
+		return ''
+	}).
+	catch(error => {
+		return ''
 	})
 }
 
@@ -66,6 +78,26 @@ export  async function getTotal(token){
 		return 0
 	})
 }
+
+/// ADMIN ENDPOINTS
+
+export  async function testAdmin(token){
+	let config = {
+	  headers: {
+		auth: token
+	  }
+	}
+	return api.get('/admin',config).then(response => {
+		if(response.status == 200){
+			return true
+		}
+		return false
+	}).
+	catch(error => {
+		return false
+	})
+}
+
 
 /// AUTH ENDPOINTS
 

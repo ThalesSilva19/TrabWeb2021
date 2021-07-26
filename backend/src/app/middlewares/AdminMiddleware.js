@@ -1,24 +1,28 @@
 const User = require('../models/userModel');
+var jwt = require('jsonwebtoken');
 
 async function authenticate(req, res, next){
-	if(!req.headers || !req.headers.authorization){
+	console.log(req.headers.auth)
+	if(!req.headers || !req.headers.auth){
 		return res.status(401).send('unauthorized');
 	}
 	try{
-		var auth = req.headers.auth;
-		var token = auth.split[' '];
+		var token = req.headers.auth.split(' ')[1];
 		var decoded = jwt.verify(token,process.env.SECRET);
-		req.body.userId = decoded.id;
-        const user = await User.findById(req.body.userId);
-        if(user.isAdmin)
+		console.log(decoded)
+		req.body.id = decoded.id;
+		const user = await User.findById(decoded.id);
+		console.log(user)
+        if(user.isAdmin){
             next()
-        else
+		}
+        else{
             return res.status(401).send('unauthorized');
+		}
 	}
 	catch{
 		return res.status(401).send('unauthorized');
 	}
 }
-
 
 module.exports = authenticate;

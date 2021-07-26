@@ -67,6 +67,7 @@ router.put('/register', async (req, res) => {
 			name: user.username,
 			email: user.email,
 			isAdmin: user.isAdmin,
+			id: user._id,
 			token: 'Bearer ' + jwt
 		}
 		return res.status(200).send(auxUser);
@@ -99,6 +100,7 @@ router.post('/login', async (req, res) => {
 				name: user.username,
 				email: user.email,
 				isAdmin: user.isAdmin,
+				id: user._id,
 				token: 'Bearer ' + jwt
 			}
 			return res.status(200).send(auxUser);
