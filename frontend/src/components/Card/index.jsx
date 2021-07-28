@@ -11,7 +11,7 @@ export default function Card(props) {
 	var history = useHistory();
 
 	function handleClick() {
-		history.push(`/products/${props.id}`);
+		history.push(`/products/${props._id}`);
 	}
 
     return (
