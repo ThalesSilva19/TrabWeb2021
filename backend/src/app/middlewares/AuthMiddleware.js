@@ -1,7 +1,7 @@
 var jwt = require('jsonwebtoken');
 
+
 async function authenticate(req, res, next){
-	console.log(req.headers);
 	if(!req.headers || !req.headers.auth){
 		return res.status(401).send('unauthorized1');
 	}

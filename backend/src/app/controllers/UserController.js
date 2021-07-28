@@ -8,12 +8,10 @@ const router = express.Router();
 
 router.use(authMiddleware);
 
-router.put('/', async (req, res) => {
-	var total = User.findById(req.body.id).select(totalReceived)
-    res.status(200).send({total});
-});
 
 router.put('/product', async (req, res) => {
+
+	console.log(req.body)
 
 	const { name, description, image, quantity, price, belong, creator } = req.body;
    	if (!name || !description || !image || !quantity || !price) {
@@ -36,8 +34,8 @@ router.put('/product', async (req, res) => {
 		image,
 		quantity:Math.floor(quantity),
 		price,
-		belong: belong,
-		creator: creator,
+		belong: req.body.id,
+		creator: req.body.id,
 		quantitySold:0
 	})
 
