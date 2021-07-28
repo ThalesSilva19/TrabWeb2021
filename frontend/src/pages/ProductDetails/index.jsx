@@ -52,8 +52,16 @@ export default function ProductDetails(props) {
                 <div className="productData">
                     <div>
                         <h1 className="productName">{product.name}</h1>
-                        <p className="productDescription">Pertence a @{product.belongName}</p>
-                        <p className="productDescription">Feito por @{product.creatorName}</p>
+						{
+							user.id === product.belong
+							? (<p className="productDescription">Pertence a você</p>)
+							: (<p className="productDescription">Pertence a @{product.belongName}</p>)
+						}
+						{
+							user.id === product.creator
+							? (<p className="productDescription">Feito por você</p>)
+							: (<p className="productDescription">Feito por @{product.creatorName}</p>)
+						}
                     </div>
 					{ inSale &&	<div>
 							<Counter maxVal={product.quantity} counter={counter} setCounter={setCounter}/>
@@ -67,7 +75,7 @@ export default function ProductDetails(props) {
 						: <h2>Não está a venda</h2>
 					}
                     
-					{ inSale && user!=null
+					{ inSale && user!=null && user.id !== product.belong
 						? <button className="productButton" onClick={addToCart}>Comprar</button>
 						: <button className="productButton" disabled>Comprar</button>
 					}
