@@ -32,14 +32,11 @@ export default function ProductDetails(props) {
 
 	const addToCart = async () => {
 		let newCart = [];
-		let maxId=0;
 		// Cart without the item
-		cart.filter(c=>c.art_id!=id).forEach(c=>{
-			if(c.id > maxId)
-				maxId = c.id;
+		cart.filter(c=>(c.art_id!=id || c.username!=user.name)).forEach(c=>{
 			newCart.push({...c});
 		});
-		newCart.push({id:maxId+1, nickname:user.name, art_id:id, quantity:counter})
+		newCart.push({username:user.name, art_id:id, quantity:counter})
 		await setCart(newCart);
 		history.push("/cart");
 	}
@@ -52,8 +49,16 @@ export default function ProductDetails(props) {
                 <div className="productData">
                     <div>
                         <h1 className="productName">{product.name}</h1>
-                        <p className="productDescription">Pertence a @{product.belongName}</p>
-                        <p className="productDescription">Feito por @{product.creatorName}</p>
+						{
+							user.id === product.belong
+							? (<p className="productDescription">Pertence a você</p>)
+							: (<p className="productDescription">Pertence a @{product.belongName}</p>)
+						}
+						{
+							user.id === product.creator
+							? (<p className="productDescription">Feito por você</p>)
+							: (<p className="productDescription">Feito por @{product.creatorName}</p>)
+						}
                     </div>
 					{ inSale &&	<div>
 							<Counter maxVal={product.quantity} counter={counter} setCounter={setCounter}/>
@@ -67,7 +72,7 @@ export default function ProductDetails(props) {
 						: <h2>Não está a venda</h2>
 					}
                     
-					{ inSale && user!=null
+					{ inSale && user!=null && user.id !== product.belong
 						? <button className="productButton" onClick={addToCart}>Comprar</button>
 						: <button className="productButton" disabled>Comprar</button>
 					}

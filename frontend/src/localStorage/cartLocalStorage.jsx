@@ -4,9 +4,9 @@ export const CartLocalStorage = () => {
 	const [value, setValue] = useState(
 		JSON.parse(localStorage.getItem('cart')) || 
 		[
-			{id: 0, nickname:"admin", art_id: 0, quantity: 1},
-			{id: 1, nickname:"admin", art_id: 1, quantity: 5},
-			{id: 2, nickname:"admin", art_id: 2, quantity: 3},
+			{username:"admin", art_id: "6100a5b1aa10c67e46e825c8", quantity: 1},
+			{username:"admin", art_id: "6100a658aa10c67e46e825d0", quantity: 1},
+			{username:"admin", art_id: "6100a44eaa10c67e46e825a1", quantity: 1},
 		]
 	);
 

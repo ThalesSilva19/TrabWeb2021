@@ -4,17 +4,21 @@ import { useHistory } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthContext";
 import Header from '../../components/Header';
 import Counter from '../../components/Counter';
-import { ArtLocalStorage } from '../../localStorage/artLocalStorage';
 import { CartLocalStorage } from '../../localStorage/cartLocalStorage';
+import { getProducts } from '../../services/api.js';
 
 const CartItem = (props) => {
-	const [arts] = ArtLocalStorage();
+	const [arts, setArts] = useState([]);
     const [counter, setCounter] = useState(props.quantity);
 	const history = useHistory();
 	let art = undefined;
 
+	useEffect(async () => {
+		setArts(await getProducts());
+	},[]);
+
 	arts.forEach((a) => {
-		if(a.id == props.art_id)
+		if(a._id == props.art_id)
 			art = a;
 	})
 
@@ -38,7 +42,7 @@ const CartItem = (props) => {
 	const removeCartItem = async ()=> {
 		// Remove art from cart
 		let newCart = [];
-		props.cart.filter(c=>c.id!=props.id).forEach(c=>newCart.push({...c}));
+		props.cart.filter(c=>c.art_id!=props.art_id || c.username!=props.username).forEach(c=>newCart.push({...c}));
 		await props.setCart(newCart);
 	}
 
@@ -82,9 +86,13 @@ const CartItem = (props) => {
 export default function Cart() {
     const { isLogged, isAdmin, user, signOut } = useContext(AuthContext)
 	const [cart, setCart] = CartLocalStorage();
-	const [arts] = ArtLocalStorage();
+	const [arts, setArts] = useState([]);
 	const [cartSum, setCartSum] = useState(0);
 	const history = useHistory();
+
+	useEffect(async () => {
+		setArts(await getProducts());
+	},[]);
 
 	const goToCheckout = () => {
 		history.push("/checkout");
@@ -93,18 +101,18 @@ export default function Cart() {
 	useEffect(()=>{
 		let auxSum = 0;
 		cart.forEach(i=>{
-			if(user!=undefined && i.nickname === user.name)
+			if(user!=undefined && i.username === user.name)
 			{
 				let artPrice = 0;
 				arts.forEach(a=>{
-					if(a.id == i.art_id)
+					if(a._id == i.art_id)
 						artPrice = a.price;
 				})
 				auxSum+=i.quantity*artPrice;
 			}
 		})
 		setCartSum(auxSum);
-	}, [cart]);
+	}, [cart, arts]);
 
     return (
 		<>
@@ -113,7 +121,7 @@ export default function Cart() {
 
 			<div className="cart-content">
 				{ user!=undefined &&
-					cart.filter(item=>(item.nickname==user.name)).map(item => (<CartItem key={item.id} {...item} cart={cart} setCart={setCart}/>))
+					cart.filter(item=>(item.username==user.name)).map(item => (<CartItem key={item.art_id} {...item} username={user.name} cart={cart} setCart={setCart}/>))
 				}
 				{ cartSum == 0 &&
 					<p className="cart-empty-text">Seu carrinho está vazio</p>

@@ -9,7 +9,6 @@ export default function Home(props) {
  	var search = props.location.search
 	const [arts, setArts] = useState([]);
 
-
 	useEffect(async () => {
 		setArts(await getProducts(search));
 	},[]);

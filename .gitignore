@@ -3,7 +3,6 @@
 # dependencies
 frontend/node_modules
 backend/node_modules
-#backend/.env
 /.pnp
 .pnp.js
 
@@ -26,3 +25,5 @@ yarn-error.log*
 
 package-lock.json
 yarn.lock
+
+backend/.env

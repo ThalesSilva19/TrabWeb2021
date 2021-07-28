@@ -46,51 +46,54 @@ router.put('/product', async (req, res) => {
 //Buy Product
 router.post('/buy', async (req, res) => {
 	buys = req.body.buys;
+
+	console.log(buys);
 	
-	if(typeof buys !== 'array'){
-        return res.status(400).send({ message: 'invalid params' });
-	}
+	buyer = await User.findById(req.body.id);
 
 	for(var i =0; i < buys.length; i++){
-		buyer = await User.findById(buys[i].id)
-		if(buys[i].product !== undefined && buys[i].quantity !== undefined){
-			product = await Product.findById(buys[i].product)
-			if(product.price){
+		if(buys[i].art_id !== undefined && buys[i].quantity !== undefined){
+			console.log(buys[i].art_id);
+			product = await Product.findById(buys[i].art_id);
+			console.log(product);
+			try{
+				seller = await User.findById(product.belong);
+			}catch(e){
+				console.log(e);
 				continue;
 			}
-			seller = await User.findById(product.owner)
-			quantity = Math.min(product.quantity, buys[i].quantity)
-			var value = quantity*product.price
-			if(value > buyer.credit){
-				buyer.credit -= value
-				buyer.save()
-				seller.credit += value
-				seller.totalReceived += value
-				seller.save()
-				
-				var buyerProduct = await Product.findOne({owner:buyer.id,artId:product.artId})
-				if(buyerProduct){
-					buyerProduct.quantity += quantity
-				}
-				else{
-					buyerProduct = product
-					buyerProduct.owner = buyer.id;
-					buyerProduct.quantity = quantity;
-					buyerProduct.quantitySold = 0;
-					buyerProduct.price = 0;
-					Product.create(buyerProduct)
-				}
+			quantity = Math.min(product.quantity, buys[i].quantity);
+			var value = quantity*product.price;
+			if(value < buyer.credit){
+				buyer.credit -= value;
+				buyer.save();
+				seller.credit += value;
+				seller.totalReceived += value;
+				seller.save();
+
+				let buyerProduct = {};
+				buyerProduct.name = product.name;
+				buyerProduct.description = product.description;
+				buyerProduct.image = product.image;
+				buyerProduct.belong = buyer.id;
+				buyerProduct.creator = product.creator;
+				buyerProduct.quantity = quantity;
+				buyerProduct.quantitySold = 0;
+				buyerProduct.price = 0;
+				Product.create(buyerProduct);
+
 				product.quantitySold += quantity
 				product.quantity -= quantity
-				if(product.quantity != 0){
+				if(product.quantity > 0){
 					product.save()
 				}
 				else{
-					products.deleteOne({id:products.id})
+					product.remove()
 				}
 			}
 		}
 	}
+    return res.status(200).send({ message: 'ok' });
 })
 
 router.get('/total', async (req, res) => {

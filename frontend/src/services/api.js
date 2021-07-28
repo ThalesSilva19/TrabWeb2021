@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "http://localhost:3001"
+  baseURL: "https://usp-web-app-backend.herokuapp.com"
 });
 
 api.defaults.headers['content-type'] = 'application/json'
@@ -90,6 +90,25 @@ export  async function getName(id){
 }
 
 /// USER ENDPOINTS
+
+export  async function buy(token, items){
+	let config = {
+	  headers: {
+		auth: token,
+	  }
+	};
+
+	return api.post('/user/buy', {buys:items}, config).then(response => {
+		console.log(response);
+		if(response.status == 200){
+			return response.data;
+		}
+		return 0
+	}).
+	catch(error => {
+		return 0
+	})
+}
 
 export  async function getTotal(token){
 	let config = {

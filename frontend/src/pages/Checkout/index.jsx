@@ -5,33 +5,37 @@ import { useHistory } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthContext";
 import Header from '../../components/Header';
 import InputMask from 'react-input-mask';
-import { ArtLocalStorage } from '../../localStorage/artLocalStorage';
 import { CartLocalStorage } from '../../localStorage/cartLocalStorage';
 import { CustomerLocalStorage } from '../../localStorage/customerLocalStorage';
+import { getProducts, buy } from '../../services/api.js';
 
 export default function Checkout() {
 	const history = useHistory();
     const { isLogged, isAdmin, user, signOut } = useContext(AuthContext)
 	const [cart, setCart] = CartLocalStorage();
-	const [arts, setArts] = ArtLocalStorage();
+	const [arts, setArts] = useState([]);
 	const [customers, setCustomers] = CustomerLocalStorage();
 	const [cartSum, setCartSum] = useState(0);
+
+	useEffect(async () => {
+		setArts(await getProducts());
+	},[]);
 
 	useEffect(()=>{
 		let auxSum = 0;
 		cart.forEach(i=>{
-			if(user!=undefined && i.nickname === user.name)
+			if(user!=undefined && i.username === user.name)
 			{
 				let artPrice = 0;
 				arts.forEach(a=>{
-					if(a.id == i.art_id)
+					if(a._id == i.art_id)
 						artPrice = a.price;
 				})
 				auxSum+=i.quantity*artPrice;
 			}
 		})
 		setCartSum(auxSum);
-	}, [cart]);
+	}, [cart, arts]);
 
     async function validateCpf(e) {
         var strCPF = e.target.value.replaceAll('.','').replace('-','');
@@ -71,49 +75,14 @@ export default function Checkout() {
     }
 
 	const finishPayment = async () => {
-		let cartItems = cart.filter(item=>(item.nickname==user.name));
-		let maxArtId = 0;
-		arts.forEach(a=>{
-			if(a.id>maxArtId)
-				maxArtId = a.id;
-		})
-
-		// Remove quantity purchased from arts
-		let newArts = []
-		arts.forEach(a=>newArts.push({...a}));
-		cartItems.forEach(i=>{
-			newArts.forEach(async a=>{
-				if(a.id == i.art_id)
-				{
-					a.quantity -= i.quantity;
-					a.quantitySold += i.quantity;
-					// Increase wallet client
-					let currentUsers = [];
-					let idx = 0;
-					for(let j=0;j<customers.length;j++)
-					{
-						if(customers[j].nickname == a.belong)
-							idx = j;
-						currentUsers.push({...customers[j]})
-					}
-					currentUsers[idx].totalReceived+=i.quantity*a.price;
-					await setCustomers(currentUsers);
-
-					// Create new arts beloging to the user
-					let currTime = new Date().toISOString();
-					newArts.push({...a, id:maxArtId+1, belong:user.name, quantity:i.quantity, quantitySold:0, creation: currTime})
-					maxArtId++;
-				}
-			})
-		});
-		// Remove arts with zero quantity
-		newArts = newArts.filter(a=>a.quantity>0);
-		await setArts(newArts);
+		// Buy
+		let cartItems = cart.filter(item=>(item.username===user.name));
+		await buy(user.token, cartItems);
 
 		// Clean cart
 		let newCart = []
 		cart.forEach(i=>newCart.push({...i}));
-		newCart = newCart.filter(i=>i.nickname!=user.name);
+		newCart = newCart.filter(i=>i.username!==user.name);
 		await setCart(newCart);
 
 		history.push("/");
