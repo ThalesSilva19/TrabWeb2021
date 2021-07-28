@@ -7,7 +7,6 @@ import { getProducts , testAdmin } from '../../services/api.js';
 export default function Home() {
 	const [arts, setArts] = useState([]);
 
-
 	useEffect(async () => {
 		setArts(await getProducts());
 	},[]);
