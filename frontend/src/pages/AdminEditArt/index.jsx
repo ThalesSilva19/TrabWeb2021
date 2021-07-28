@@ -16,7 +16,7 @@ export default function AdminEditArt(props) {
 		image: "",
 		price: 0,
 		quantity: 1,
-		quantitySold: 1
+		quantitySold: 0
 	})
 	const id = props.match.params.id;// "adicionar" or integer number
 	const { user } = useContext(AuthContext);

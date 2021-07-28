@@ -32,14 +32,11 @@ export default function ProductDetails(props) {
 
 	const addToCart = async () => {
 		let newCart = [];
-		let maxId=0;
 		// Cart without the item
-		cart.filter(c=>c.art_id!=id).forEach(c=>{
-			if(c.id > maxId)
-				maxId = c.id;
+		cart.filter(c=>(c.art_id!=id || c.username!=user.name)).forEach(c=>{
 			newCart.push({...c});
 		});
-		newCart.push({id:maxId+1, nickname:user.name, art_id:id, quantity:counter})
+		newCart.push({username:user.name, art_id:id, quantity:counter})
 		await setCart(newCart);
 		history.push("/cart");
 	}
