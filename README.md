@@ -164,7 +164,6 @@ npm start
 ```
 
 Para executar o backend:\
-(Obs: entrar em contato para pedir o arquivo `.env`)
 ```
 cd TrabWeb2021/backend
 npm install
@@ -175,5 +174,7 @@ npm run dev
 Os arquivos de imagem das artes não são enviados para a cloud e somente o link é armazenado. Dessa forma, é necessário que o usuário já possua um link referente à imagem.
 
 ## 8. Comentários
-O frontend é executado localmente, e o backend está hospedado no heroku.
-O carrinho é armazenado somente localmente, não persistindo os dados entre computadores.
+- Foi feito o deploy do frontend no heroku: https://usp-web-app-frontend.herokuapp.com
+- Foi feito o deploy do backend no heroku: https://usp-web-app-backend.herokuapp.com
+- O banco de dados está na [MongoDB Cloud](https://www.mongodb.com/cloud).
+- O carrinho é armazenado somente localmente, não persistindo os dados entre máquinas.
