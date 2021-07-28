@@ -1,1 +1,1 @@
-web: node --experimental-modules backend/src/server.js
+web: node --experimental-modules backend/src/server.js && npm run build
