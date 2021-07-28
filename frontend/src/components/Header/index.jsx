@@ -1,10 +1,16 @@
 import { useContext } from 'react';
 import { AuthContext } from "../../contexts/AuthContext";
+import { useHistory } from "react-router-dom";
 import './style.css';
 
 export default function Header() {
     const { isLogged, isAdmin, user, signOut } = useContext(AuthContext)
-	console.log(user)
+	const history = useHistory();
+
+	function handle(){
+		var search = document.getElementById('search').value
+		window.location.href = '?'+search
+	}
 
     return (
         <div className="headerContainer">
@@ -51,12 +57,12 @@ export default function Header() {
                             )
                         }
                     </ul>
-                    <form className="form-inline my-2 my-lg-0">
+                    <div className="form-inline my-2 my-lg-0">
                         <label >
-                            <input className="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Buscar"/>
-                            <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+                            <input id='search' className="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Buscar"/>
+                            <button onClick={handle} className="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
                         </label>
-                    </form>
+                    </div>
                 </div>
             </nav>
         </div>
