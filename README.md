@@ -75,11 +75,10 @@ Clique em _M_ para ir à image do mockup. (criados utilizando [Figma](https://ww
 ### 2.2 Dados no Servidor
 Todos os dados especificados nos requisitos gerais, e nos requisitos da [seção 1](#1-requisitos) serão armazenados em um banco de dados relacional. Apresentamos abaixo os campos das tabelas mais importantes:
 
-_Art {id, name, description, image, price, quantity, quantity_sold, can_sell, owner_id, creator_id, creation}\
-Customer {id, name, address, phone, email, password, total_received, token, creation}\
-Admin {id, name, username, phone, email, password, token, creation}_
+_Art {id, name, description, image, price, quantity, quantity_sold, belong, creator, creation}_\
+_User {id, name, address, phone, email, password, total_received, credit, creation}_
 
-Além disso, o servidor irá prover uma API para permitir a comunicação da aplicação com o banco de dados de acordo com as permissões do usuário. Será possível distinguir entre usuário nos requests a partir do token.
+Além disso, o servidor irá prover uma API para permitir a comunicação da aplicação com o banco de dados de acordo com as permissões do usuário. Será possível distinguir entre usuário nos requests a partir do token. O banco de dados está na [MongoDB Cloud](https://www.mongodb.com/cloud).
 
 ## 3. Comentários sobre o código
 Foi decidido por utilizar [**React**](https://reactjs.org/) para criar o site utilizando o padão Single-Page Application (SPA).
@@ -173,6 +172,8 @@ npm run dev
 ```
 
 ## 7. Problemas
+Os arquivos de imagem das artes não são enviados para a cloud e somente o link é armazenado. Dessa forma, é necessário que o usuário já possua um link referente à imagem.
 
 ## 8. Comentários
-
+O frontend é executado localmente, e o backend está hospedado no heroku.
+O carrinho é armazenado somente localmente, não persistindo os dados entre computadores.
