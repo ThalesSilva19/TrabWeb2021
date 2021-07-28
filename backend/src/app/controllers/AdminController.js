@@ -23,6 +23,16 @@ router.get('/products', async (req, res) => {
     res.status(200).send({products});
 });
 
+router.delete('/products/:id', async (req, res) => {
+	try{
+		console.log(req.params.id);
+		await Product.findByIdAndRemove(req.params.id);
+		return res.status(200).send({ message: 'Product deleted'});
+    } catch (err) {
+        return res.status(400).send({ message: `error: ${err}` });
+    }
+});
+
 router.get('/products/:id', async (req, res) => {
 	try{
 		const product = await Product.findById(req.params.id);
@@ -118,6 +128,16 @@ router.get('/users/:id', async (req, res) => {
 	try{
 		const user = await User.findById(req.params.id);
 		return res.status(200).send(user);
+    } catch (err) {
+        return res.status(400).send({ message: `error: ${err}` });
+    }
+});
+
+//---------- Delete ----------//
+router.delete('/users/:id', async (req, res) => {
+	try{
+		await User.findByIdAndRemove(req.params.id);
+		return res.status(200).send({ message: 'No user to delete'});
     } catch (err) {
         return res.status(400).send({ message: `error: ${err}` });
     }

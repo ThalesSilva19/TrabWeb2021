@@ -13,8 +13,7 @@ import AdminList from './pages/AdminList';
 import Artist from './pages/Artist';
 import Collection from './pages/Collection';
 import AdminEditArt from './pages/AdminEditArt';
-import AdminEditCustomer from './pages/AdminEditCustomer';
-import AdminEditAdmin from './pages/AdminEditAdmin';
+import AdminEditUser from './pages/AdminEditUser';
 import Login from './pages/Login';
 import Logout from './pages/Logout';
 import Register from './pages/Register';
@@ -26,8 +25,8 @@ import { AuthProvider } from './contexts/AuthContext';
 ReactDOM.render(
     <React.StrictMode>
         <BrowserRouter>
-            <Switch>
-                <AuthProvider>
+            <AuthProvider>
+            	<Switch>
                     <Route exact path='/' component={Home}/>
                     <Route exact path='/products/:id' component={ProductDetails}/>
                     <Route exact path='/artist/:user' component={Artist}/>
@@ -37,14 +36,13 @@ ReactDOM.render(
                     <Route exact path='/logout' component={Logout}/>
                     <Route exact path='/register' component={Register}/>
 					<Route exact path='/admin/arte/:id' component={AdminEditArt}/>
-					<Route exact path='/admin/cliente/:id' component={AdminEditCustomer}/>
-					<Route exact path='/admin/admin/:id' component={AdminEditAdmin}/>
+					<Route exact path='/admin/:type/:id' component={AdminEditUser}/>
 					<Route exact path='/admin/:type' component={AdminList}/>
                     <Route exact path='/cart' component={Cart}/>
                     <Route exact path='/checkout' component={Checkout}/>
                     <Route exact path='/new' component={NewArt}/>
-                </AuthProvider>
-            </Switch>
+            	</Switch>
+            </AuthProvider>
         </BrowserRouter>
     </React.StrictMode>,
     document.getElementById('root')

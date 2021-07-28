@@ -1,26 +1,28 @@
-import { useEffect, useState  } from "react";
+import { useEffect, useState, useContext } from "react";
 import { useHistory } from "react-router-dom";
 import './style.css'
 import '../../styles/admin.css'
 import Header from '../../components/Header';
 import { getProductsAdmin, getAdminsAdmin, getCustomersAdmin  } from '../../services/api.js';
+import { AuthContext } from "../../contexts/AuthContext";
 
 export default function AdminList(props) {
 	const history = useHistory();
 	const [arts, setArts] = useState([]);
 	const [customers, setCustomers] = useState([]);
 	const [admins, setAdmins] = useState([]);
+	const { user } = useContext(AuthContext);
+	const type = props.match.params.type;
 
 	useEffect(async () => {
 		if(type === "arte")
-			setArts(await getProductsAdmin("TODO"));
+			setArts(await getProductsAdmin(user.token));
 		if(type === "cliente")
-			setCustomers(await getCustomersAdmin("TODO"));
+			setCustomers(await getCustomersAdmin(user.token));
 		if(type === "admin")
-			setAdmins(await getAdminsAdmin("TODO"));
+			setAdmins(await getAdminsAdmin(user.token));
 	},[]);
 
-	const type = props.match.params.type;
 	let title = "";
 	let columns = [];
 	let rows = [];
@@ -36,9 +38,9 @@ export default function AdminList(props) {
 	else if(type === "admin")
 	{
 		title = "Administradores";
-		columns  = ["Id", "Email"];
+		columns  = ["Id", "Nome", "Email"];
 		admins.forEach(admin => {
-			rows.push([admin._id, admin.email]);
+			rows.push([admin._id, admin.name, admin.email]);
 		});
 	}
 	else if(type === "arte")

@@ -115,7 +115,6 @@ export  async function register(name,address,phone,email,password,username){
 
 export  async function login(email,password){
 	return api.post('/auth/login',{email,password}).then(response => {
-		console.log(response)
 		if(response.status == 200){
 			return response.data
 		}
@@ -188,6 +187,36 @@ export async function getAdminAdmin(token, id){
 	return adminGetOne(token, `/admin/users/${id}`);
 }
 
+// Delete
+const adminDelete = (token, endpoint) => {
+	let config = {
+	  headers: {
+		auth: token
+	  }
+	};
+	return api.delete(endpoint, config).then(response => {
+		if(response.status == 200){
+			return response.data;
+		}
+		return undefined;
+	}).
+	catch(error => {
+		return undefined;
+	})
+}
+
+export async function deleteProductAdmin(token, id){
+	return adminDelete(token, `/admin/products/${id}`);
+}
+
+export async function deleteCustomerAdmin(token, id){
+	return adminDelete(token, `/admin/users/${id}`);
+}
+
+export async function deleteAdminAdmin(token, id){
+	return adminDelete(token, `/admin/users/${id}`);
+}
+
 // Create
 const adminCreate = (token, endpoint, data) => {
 	let config = {
@@ -197,7 +226,6 @@ const adminCreate = (token, endpoint, data) => {
 	};
 
 	return api.put(endpoint, data, config).then(response => {
-		console.log(response);
 		if(response.status == 200){
 			return response.data;
 		}
@@ -217,7 +245,7 @@ export async function createCustomerAdmin(token, data){
 }
 
 export async function createAdminAdmin(token, data){
-	return adminCreate(token, '/admin/users', data);
+	return adminCreate(token, '/admin/admins', data);
 }
 
 // Update
@@ -229,7 +257,6 @@ const adminUpdate = (token, endpoint, data) => {
 	};
 
 	return api.post(endpoint, data, config).then(response => {
-		console.log(response);
 		if(response.status == 200){
 			return response.data;
 		}
