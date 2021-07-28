@@ -5,9 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon src/server.js --ignore __tests__",
-    "build": "cd frontend && npm install && npm run build",
-    "test": "SET NODE_ENV=test && yarn jest",
-    "heroku-postbuild": "yarn build && yarn deploy"
+    "test": "SET NODE_ENV=test && yarn jest"
   },
   "keywords": [],
   "author": "",
