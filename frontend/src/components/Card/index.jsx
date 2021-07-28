@@ -27,7 +27,7 @@ export default function Card(props) {
 			}
 			</div>
 			{ my 
-				? <button>Pertence à Mim</button>
+				? <button onClick={handleClick}>Pertence à Mim</button>
 				: inSale 
 					? <button onClick={handleClick}>Comprar</button>
 					: <button onClick={handleClick}>Ver</button>

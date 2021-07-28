@@ -18,7 +18,7 @@ export default function Login(props) {
 		const email = document.querySelector('#email').value
 		const password = document.querySelector('#password').value
 		if(await signin(email,password)){
-			//history.push('/')
+			history.push('/')
 		}
 		else{
 			alert('Login Inválido')
