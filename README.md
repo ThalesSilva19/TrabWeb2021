@@ -86,7 +86,12 @@ Foi decidido por utilizar [**React**](https://reactjs.org/) para criar o site ut
 O código está disponível na pasta `src`. É possível encontrar as páginas em `src/pages`, e os arquivos de estilização css em `src/styles` e dentro da pasta de cada página. Foi utilizado bootstrap para fazer o estilo do navigation bar facilitando na sua utilização e fizemos apenas alguns ajustes de estilo como nas cores.
 
 ## 4. Plano de teste
-Para testar o backend iremos utilizar o [Postman](https://www.postman.com/), futuramente iremos adicionar um link com a documentação da API gerada pelo Postman.
+Para testar a API montamos um script [testapi.sh](./testapi.sh), para utiliza-lo é necessário ter [**httpie**](https://httpie.io/) e [**jq**](https://stedolan.github.io/jq/) instalados.<br>
+Para executar basta executar:
+```
+bash testapi.sh
+```
+
 Para testar o cliente foram realizados diversos testes manuais para verificar que as funcionalidades do site estão funcionando corretamente. Além disso, o site foi testado no Firefox e Google Chrome para validar sua utilização nos navegadores mais comuns. Abaixo iremos descrever os testes realizados.
 
 - **Teste login usuário comum e administrador:**
