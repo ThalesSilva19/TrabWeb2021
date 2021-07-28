@@ -2,6 +2,7 @@ const express = require("express");
 
 const authMiddleware = require("../middlewares/AuthMiddleware");
 const User = require('../models/userModel');
+const Product = require('../models/productModel');
 
 const router = express.Router();
 
@@ -10,12 +11,11 @@ router.use(authMiddleware);
 router.put('/', async (req, res) => {
 	var total = User.findById(req.body.id).select(totalReceived)
     res.status(200).send({total});
-})
-
+});
 
 router.put('/product', async (req, res) => {
 
-	const { name, description, image, quantity, price } = req.body;
+	const { name, description, image, quantity, price, belong, creator } = req.body;
    	if (!name || !description || !image || !quantity || !price) {
         return res.status(400).send({ message: 'missing params' });
 	}
@@ -23,23 +23,25 @@ router.put('/product', async (req, res) => {
 	if(
 		typeof name !== 'string' ||		
 		typeof description !== 'string' ||		
-		typeof image !== 'image'  ||		
+		typeof image !== 'string'  ||		
 		typeof quantity !== 'number' ||		
 		typeof price !== 'number'		
 	){
         return res.status(400).send({ message: 'invalid params' });
 	}
 
-	Product.create({
+	const product = await Product.create({
 		name,
 		description,
 		image,
 		quantity:Math.floor(quantity),
 		price,
-		belong: req.body.userId,
-		creator: req.body.userId,
+		belong: belong,
+		creator: creator,
 		quantitySold:0
 	})
+
+	return res.status(200).send({product})
 	
 })
 
