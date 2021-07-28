@@ -8,8 +8,12 @@ api.defaults.headers['content-type'] = 'application/json'
 
 /// PUBLIC ENDPOINTS
 
-export async function getProducts(){
-	return api.get('/products').then(response => {
+export async function getProducts(search){
+	var params = ''
+	if(search != undefined){
+		params = '?search='+search
+	}
+	return api.get('/products'+params).then(response => {
 		if(response.status === 200) {
 			return response.data.products
 		}

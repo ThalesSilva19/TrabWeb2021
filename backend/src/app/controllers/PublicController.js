@@ -17,6 +17,9 @@ router.get('/products', async (req, res) => {
 	if(req.query.creator !== undefined){
 		query = query.where('creator').equals(req.query.creator)
 	}
+	if(req.query.search !== undefined){
+		query = query.where('name').regex('.*'+req.query.search+'.*')
+	}
 	var raw_products = await query.exec()
 	var products = []
 
