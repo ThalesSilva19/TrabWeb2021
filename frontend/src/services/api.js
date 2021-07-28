@@ -36,6 +36,22 @@ export async function getProduct(id){
 	});
 }
 
+export async function createProduct(product, user) {
+	return api.put(`/user/product`, product, {
+		headers: {
+			auth: user.token,
+		}
+	}).then(response => {
+		if(response.status === 200) {
+			return response.data.product;
+		}
+		return '';
+	}).
+	catch(error => {
+		return '';
+	});
+}
+
 
 export  async function getProductsByArtist(creator){
 	return api.get('/products',{params:{creator:creator}}).then(response => {
