@@ -4,21 +4,23 @@ import { AuthContext } from "../../contexts/AuthContext";
 import { useHistory } from "react-router-dom";
 import Counter from '../../components/Counter';
 import Header from '../../components/Header';
-import { ArtLocalStorage,ArtById} from '../../localStorage/artLocalStorage';
 import { CartLocalStorage } from '../../localStorage/cartLocalStorage';
+import { getProduct , testAdmin } from '../../services/api.js';
 
 export default function ProductDetails(props) {
-    const { isLogged, isAdmin, user, signOut } = useContext(AuthContext)
+	
+    const { isLogged, isAdmin, user, signOut } = useContext(AuthContext);
 	const [cart, setCart] = CartLocalStorage();
-	const [arts] = ArtLocalStorage();
 	const history = useHistory();
     const [counter, setCounter] = useState(1);
     const id = props.match.params.id;
-	const product = ArtById(id)[0]
-	console.log(product)
+	const [product,setProduct] = useState({});
+
 	let inSale = product.price != 0;
 
-	useEffect(() => {
+	useEffect(async () => {
+		setProduct(await getProduct(id));
+
 		let quantity = -1;
 		cart.forEach((c) => {
 			if(c.art_id == id)
@@ -50,8 +52,8 @@ export default function ProductDetails(props) {
                 <div className="productData">
                     <div>
                         <h1 className="productName">{product.name}</h1>
-                        <p className="productDescription">Pertence a @{product.belong}</p>
-                        <p className="productDescription">Feito por @{product.creator}</p>
+                        <p className="productDescription">Pertence a @{product.belongName}</p>
+                        <p className="productDescription">Feito por @{product.creatorName}</p>
                     </div>
 					{ inSale &&	<div>
 							<Counter maxVal={product.quantity} counter={counter} setCounter={setCounter}/>
@@ -61,7 +63,7 @@ export default function ProductDetails(props) {
 					}
 					
 					{ inSale
-						? <h2 className="productPrice">Disponível por: <br/>R$ {product.price.toFixed(2)}</h2>
+						? <h2 className="productPrice">Disponível por: <br/>R$ {product.price?.toFixed(2)}</h2>
 						: <h2>Não está a venda</h2>
 					}
                     

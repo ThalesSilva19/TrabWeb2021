@@ -1,7 +1,4 @@
 import axios from "axios";
-import { useContext } from "react";
-
-import { AuthContext } from "../contexts/AuthContext";
 
 const api = axios.create({
   baseURL: "http://localhost:3001"
@@ -11,9 +8,9 @@ api.defaults.headers['content-type'] = 'application/json'
 
 /// PUBLIC ENDPOINTS
 
-export  async function getProducts(){
+export async function getProducts(){
 	return api.get('/products').then(response => {
-		if(response.status == 200){
+		if(response.status === 200) {
 			return response.data.products
 		}
 		return []
@@ -21,6 +18,18 @@ export  async function getProducts(){
 	catch(error => {
 		return []
 	})
+}
+
+export async function getProduct(id){
+	return api.get(`/products/${id}`).then(response => {
+		if(response.status === 200) {
+			return response.data.product;
+		}
+		return [];
+	}).
+	catch(error => {
+		return [];
+	});
 }
 
 
@@ -50,7 +59,7 @@ export  async function getProductsByOwner(owner){
 
 export  async function getName(id){
 	return api.get('/name/'+id).then(response => {
-		if(response.status == 200){
+		if(response.status === 200){
 			return response.data.name
 		}
 		return ''

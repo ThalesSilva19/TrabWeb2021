@@ -35,6 +35,7 @@ router.get('/products', async (req, res) => {
 			names[creator_id] = user.username;
 		}
 		products.push({
+			_id:raw._id,
 			name:raw.name,
 			image:raw.image,
 			belong:names[belong_id],
@@ -48,11 +49,40 @@ router.get('/products', async (req, res) => {
     res.status(200).send({products});
 });
 
+router.get('/products/:id', async (req, res) => {
+	const id = req.params.id;
+	var product = await Product.findById({_id:id});
+	const userBelong = await User.findById(product.belong);
+	const userCreator = await User.findById(product.creator);
+	console.log(userBelong);
+	console.log(userCreator);
+	product.belong = await userBelong.username;
+	product.creator = await userCreator.username;
+	console.log(product);
+	res.status(200).send({
+		product: {
+			_id: product._id,
+			name: product.name,
+			description: product.description,
+			image: product.image,
+			belong: product.belong,
+			creator: product.creator,
+			quantity: product.quantity,
+			quantitySold: product.quantitySold,
+			price: product.price,
+			createdAt: product.createdAt,
+			updatedAt: product.updatedAt,
+			_v: product._v,
+			belongName: userBelong.username,
+			creatorName: userCreator.username
+		}
+	});
+});
+
 router.get('/name/:id', async (req, res) => {
 	var user = await User.findById(req.params.id);
 	var name = user.username;
     res.status(200).send({name});
-	
-})
+});
 
 module.exports = (app) => app.use('/', router);
